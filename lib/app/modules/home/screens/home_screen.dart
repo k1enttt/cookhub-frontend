@@ -8,12 +8,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(Strings.appName),
+        title: Text(
+          Strings.appName,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: Colors.white),
+        ),
       ),
-      body: const Center(
+      body: Center(
         child: Text(
           'HomeScreen is working',
-          style: TextStyle(fontSize: 20),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: Colors.white),
         ),
       ),
     );

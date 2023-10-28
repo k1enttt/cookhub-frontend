@@ -1,5 +1,15 @@
-import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:cookhub_frontend/app/modules/onboarding/screens/splash_screen.dart';
+
+final theme = ThemeData(
+  useMaterial3: true,
+  colorScheme: ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    seedColor: const Color.fromARGB(255, 255, 255, 255),
+  ),
+  textTheme: GoogleFonts.poppinsTextTheme(),
+);
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomeScreen(),
+      theme: theme,
+      home: const SplashScreen(),
     );
   }
 }
