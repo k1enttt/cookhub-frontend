@@ -68,6 +68,9 @@ flutter:
     - assets/images/on_boarding_images/on_boarding_welcome.png
     - assets/images/on_boarding_images/on_boarding_cookbook.png
     - assets/images/on_boarding_images/on_boarding_shopping.png
+    - assets/images/login_images/login_image.png
+    - assets/logos/logo-circle.svg
+    - assets/icons/mail.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

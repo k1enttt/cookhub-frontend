@@ -2,6 +2,7 @@ class TImages {
   // App logos
   static const String lightAppLogo = 'assets/logos/logo-light.svg';
   static const String darkAppLogo = 'assets/logos/logo-light.svg';
+  static const String logoCircle = 'assets/logos/logo-circle.svg';
 
   // Social logos
   static const String googleLogo = 'assets/logos/google.svg';
@@ -14,4 +15,11 @@ class TImages {
       'assets/images/on_boarding_images/on_boarding_cookbook.png';
   static const String onBoardingShopping =
       'assets/images/on_boarding_images/on_boarding_shopping.png';
+
+  // Login images
+  static const String loginImage = 'assets/images/login_images/login_image.png';
+}
+
+class TIcons {
+  static const String mailIcon = 'assets/icons/mail.svg';
 }
