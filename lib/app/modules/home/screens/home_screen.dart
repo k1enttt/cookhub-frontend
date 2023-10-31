@@ -1,4 +1,4 @@
-import 'package:cookhub_frontend/core/values/strings.dart';
+import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
