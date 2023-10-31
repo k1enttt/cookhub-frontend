@@ -10,7 +10,7 @@ class TAppTheme {
       brightness: Brightness.light,
       seedColor: const Color.fromARGB(255, 255, 255, 255),
     ),
-    textTheme: TTextThem.lightTextTheme,
+    textTheme: TTextTheme.lightTextTheme,
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -18,6 +18,6 @@ class TAppTheme {
       brightness: Brightness.dark,
       seedColor: const Color.fromARGB(255, 255, 255, 255),
     ),
-    textTheme: TTextThem.darkTextTheme,
+    textTheme: TTextTheme.darkTextTheme,
   );
 }

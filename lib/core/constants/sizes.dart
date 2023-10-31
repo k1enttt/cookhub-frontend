@@ -9,11 +9,11 @@ class TSizes {
   static const double heading_10 = 10;
 
   // Body
-  static const double bodyLarge = 16;
-  static const double bodyMedium = 14;
-  static const double bodyNormal = 12;
-  static const double body_10 = 10;
-  static const double bodyTiny = 8;
+  static const double bodyLarge = 16.0;
+  static const double bodyMedium = 14.0;
+  static const double bodyNormal = 12.0;
+  static const double body_10 = 10.0;
+  static const double bodyTiny = 8.0;
 
   // Spacing
   static const double space_8 = 8.0;
