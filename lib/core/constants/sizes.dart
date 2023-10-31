@@ -34,4 +34,5 @@ class TSizes {
 
   static const double smallBtnW = 168;
   static const double smallBtnH = 48;
+  static const double smallIcon = 20;
 }

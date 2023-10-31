@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/sizes.dart';
 import 'package:cookhub_frontend/app/modules/onboarding/models/onboarding_model.dart';
@@ -52,7 +53,7 @@ class OnboardingContent extends StatelessWidget {
             children: [
               Text(
                 onboardingData.title,
-                style: Theme.of(context).textTheme.displayLarge,
+                style: TTextTheme.lightTextTheme.displayLarge,
                 maxLines: 2,
               ),
               const SizedBox(
@@ -60,7 +61,7 @@ class OnboardingContent extends StatelessWidget {
               ),
               Text(
                 onboardingData.subTitle,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: TTextTheme.lightTextTheme.bodyMedium,
               ),
             ],
           ),

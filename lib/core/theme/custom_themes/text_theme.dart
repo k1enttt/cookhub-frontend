@@ -6,6 +6,7 @@ class TTextTheme {
   TTextTheme._();
 
   static TextTheme lightTextTheme = const TextTheme(
+    // Heading
     displayLarge: TextStyle(
       fontSize: TSizes.heading_32,
       fontWeight: FontWeight.w600,
@@ -30,17 +31,16 @@ class TTextTheme {
       fontSize: TSizes.heading_10,
       fontWeight: FontWeight.w600,
     ),
+
+    // Body
     bodyLarge: TextStyle(
       fontSize: TSizes.bodyLarge,
-      fontWeight: FontWeight.normal,
     ),
     bodyMedium: TextStyle(
       fontSize: TSizes.bodyMedium,
-      fontWeight: FontWeight.normal,
     ),
     bodySmall: TextStyle(
       fontSize: TSizes.bodyNormal,
-      fontWeight: FontWeight.normal,
     ),
   ).apply(
     displayColor: Colors.white,
