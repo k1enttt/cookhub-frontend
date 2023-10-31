@@ -22,6 +22,7 @@ class TextButtonCustom extends StatelessWidget {
             style: TTextTheme.lightTextTheme.bodySmall!.copyWith(
               decoration: TextDecoration.underline,
               decorationColor: Colors.white,
+              decorationThickness: 1,
               letterSpacing: 0.2,
             )),
       ),

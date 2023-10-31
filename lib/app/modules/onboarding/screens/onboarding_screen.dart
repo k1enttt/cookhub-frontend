@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/login_signup/screens/login_screen.dart';
 import 'package:cookhub_frontend/app/modules/onboarding/models/onboarding_model.dart';
 import 'package:cookhub_frontend/app/modules/onboarding/widgets/text_button_custom.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,12 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentIndex = 0;
   final PageController _pageController = PageController();
+
+  void _nextToLoginPage() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (ctx) => const LoginScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,6 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         nextPage: () {
                           if (_currentIndex == onboardingData.length - 1) {
                             // Link to Login / Home page
+                            _nextToLoginPage();
                           } else {
                             _pageController.nextPage(
                               duration: const Duration(
@@ -116,7 +124,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       _currentIndex != onboardingData.length - 1
                           ? TextButtonCustom(
                               contentTextBtn: 'Skip',
-                              skipOnboarding: () {},
+                              skipOnboarding: _nextToLoginPage,
                             )
                           : TextButtonCustom(
                               contentTextBtn: '',
