@@ -10,6 +10,7 @@ class DefaultButton extends StatelessWidget {
     required this.btnBorder,
     required this.btnBackground,
     required this.labelColor,
+    required this.goToHomePage,
   });
 
   final String btnTitle;
@@ -17,6 +18,7 @@ class DefaultButton extends StatelessWidget {
   final Color btnBorder;
   final Color btnBackground;
   final Color labelColor;
+  final void Function() goToHomePage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class DefaultButton extends StatelessWidget {
         width: double.infinity,
         height: TSizes.defaultBtnH,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: goToHomePage,
           style: ElevatedButton.styleFrom(
             backgroundColor: btnBackground,
             side: BorderSide(

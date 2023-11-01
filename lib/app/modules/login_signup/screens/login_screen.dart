@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
@@ -11,6 +12,15 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _goToHomePage() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (ctx) => const HomeScreen(),
+        ),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -80,6 +90,7 @@ class LoginScreen extends StatelessWidget {
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
+                          goToHomePage: () {},
                         ),
                         DefaultButton(
                           btnTitle: 'Continue with Facebook',
@@ -87,6 +98,7 @@ class LoginScreen extends StatelessWidget {
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
+                          goToHomePage: () {},
                         ),
                         DefaultButton(
                           btnTitle: 'Continue with Email',
@@ -94,6 +106,7 @@ class LoginScreen extends StatelessWidget {
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
+                          goToHomePage: () {},
                         ),
                         DefaultButton(
                           btnTitle: 'Continue as guest',
@@ -101,6 +114,7 @@ class LoginScreen extends StatelessWidget {
                           btnBackground: Colors.white,
                           btnBorder: Colors.transparent,
                           labelColor: ColorSelect.textColor,
+                          goToHomePage: _goToHomePage,
                         ),
                         const SizedBox(
                           height: TSizes.space_8,
