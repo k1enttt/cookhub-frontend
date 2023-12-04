@@ -7,6 +7,7 @@ import 'package:cookhub_frontend/app/modules/recipes/widgets/comment_text.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/ingredient_item.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/step_images.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/step_text.dart';
+import 'package:cookhub_frontend/core/values/fonts.dart';
 import 'package:cookhub_frontend/core/values/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,10 +20,28 @@ class RecipesScreen extends StatelessWidget {
     RecipesController controller = Get.put(RecipesController());
     double screenWidth = MediaQuery.of(context).size.width;
 
-    RxBool isStepsViewOrIngredientsView =
-        controller.isStepsViewOrIngredientView;
+    // Font
+    TextStyle heading2Style = CustomFonts.heading2Style;
+    TextStyle mediumStyle = CustomFonts.mediumStyle;
+    TextStyle normalStyle = CustomFonts.normalStyle;
 
     // Data
+    String backgroundImg = 'assets/back_image.png';
+    String dishName = 'Vietnamese Pho';
+    String authorName = 'Nguyễn Hữu Hiệu';
+    int authorFollowers = 100;
+    String authorAvt = 'assets/author_avt.png';
+    String dishDescription =
+        'Pho is a Vietnamese soup dish consisting of broth, rice noodles, herbs, and meat.';
+    CookingDuration cookingDuration =
+        CookingDuration(time: 30, unit: 'minutes');
+    String cookingLevel = 'Medium';
+    double rating = 4.6;
+    int reviewQuantity = 16;
+    RxInt dishQuantity = controller.dishQuantity;
+    int ingredientQuantity = 15;
+    RxBool isStepsViewOrIngredientsView =
+        controller.isStepsViewOrIngredientView;
     List<RecipeStep> steps = controller.steps;
     List<Ingredient> ingredients = controller.ingredients;
     List<Comment> comments = controller.comments;
@@ -37,6 +56,16 @@ class RecipesScreen extends StatelessWidget {
       isStepsViewOrIngredientsView.value = false;
     }
 
+    void increaseDishQuantity() {
+      dishQuantity.value++;
+    }
+
+    void decreaseDishQuantity() {
+      if (dishQuantity.value > 0) {
+        dishQuantity.value--;
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(Strings.appName),
@@ -47,21 +76,21 @@ class RecipesScreen extends StatelessWidget {
           children: [
             // Hình ảnh nền
             Image(
-              image: const AssetImage('assets/back_image.png'),
+              image: AssetImage(backgroundImg),
               width: screenWidth,
             ),
 
             // Tựa đề
             // Thời gian nấu | Độ khó | Đánh giá
-            const Text(
-              "Vietnamese Pho",
+            Text(
+              dishName,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: heading2Style,
             ),
-            const Text(
-              "30 minutes | Medium | 4.6 (16 reviews)",
+            Text(
+              "${cookingDuration.time} ${cookingDuration.unit} | $cookingLevel | $rating ($reviewQuantity reviews)",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+              style: normalStyle,
             ),
 
             // Tags
@@ -78,8 +107,7 @@ class RecipesScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: Text(
                     tags[tagIndex].name,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.normal),
+                    style: normalStyle,
                   ),
                 ),
               ),
@@ -92,16 +120,27 @@ class RecipesScreen extends StatelessWidget {
                 children: [
                   SizedBox(
                     child: Row(
-                      children: const [
+                      children: [
                         CircleAvatar(
-                          backgroundImage: AssetImage('assets/author_avt.png'),
+                          backgroundImage: AssetImage(authorAvt),
                           radius: 20,
                         ),
-                        SizedBox(width: 10),
-                        Text(
-                          "Nguyễn Hữu Hiệu",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.normal),
+                        const SizedBox(width: 10),
+                        SizedBox(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                authorName,
+                                style: mediumStyle,
+                              ),
+                              const SizedBox(height: 3),
+                              Text(
+                                '$authorFollowers followers',
+                                style: normalStyle,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -112,15 +151,20 @@ class RecipesScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: Colors.green),
                     ),
-                    child: const Text('Follow'),
+                    child: Text(
+                      'Follow',
+                      style: normalStyle,
+                    ),
                   )
                 ],
               ),
             ),
 
             // Mô tả
-            const Text(
-                'Pho is a Vietnamese soup dish consisting of broth, rice noodles, herbs, and meat.'),
+            Text(
+              dishDescription,
+              style: normalStyle,
+            ),
 
             // Các bước thực hiện && Thành phần - Nút bấm
             SizedBox(
@@ -137,10 +181,9 @@ class RecipesScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[300],
                       ),
-                      child: const Text(
+                      child: Text(
                         "Steps",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: mediumStyle,
                       ),
                     ),
                   ),
@@ -154,10 +197,9 @@ class RecipesScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[300],
                       ),
-                      child: const Text(
+                      child: Text(
                         "Ingredients",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: mediumStyle,
                       ),
                     ),
                   ),
@@ -168,7 +210,10 @@ class RecipesScreen extends StatelessWidget {
             // Các bước chi tiết
             (isStepsViewOrIngredientsView.value == true)
                 ? (steps.isEmpty
-                    ? const Text('No steps')
+                    ? Text(
+                        'No steps',
+                        style: normalStyle,
+                      )
                     : SizedBox(
                         height: 500,
                         child: ListView.builder(
@@ -207,13 +252,17 @@ class RecipesScreen extends StatelessWidget {
                 // Thành phần chi tiết
                 SizedBox(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         // Số lượng phần ăn được phục vụ
                         SizedBox(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('How many servings?'),
+                              Text(
+                                'How many servings?',
+                                style: normalStyle,
+                              ),
 
                               // Quantity and button to increase/decrease
                               SizedBox(
@@ -221,7 +270,7 @@ class RecipesScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: decreaseDishQuantity,
                                         icon: const Icon(
                                           Icons.remove_circle_outline,
                                           size: 16,
@@ -229,15 +278,13 @@ class RecipesScreen extends StatelessWidget {
                                         )),
                                     Container(
                                       padding: const EdgeInsets.all(10),
-                                      child: const Text(
-                                        "1",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
+                                      child: Text(
+                                        dishQuantity.toString(),
+                                        style: mediumStyle,
                                       ),
                                     ),
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: increaseDishQuantity,
                                         icon: const Icon(
                                           Icons.add_circle_outline,
                                           size: 16,
@@ -251,15 +298,21 @@ class RecipesScreen extends StatelessWidget {
                         ),
 
                         // Số lượng gia vị
-                        const Text(
-                          "15 ingredients",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                        SizedBox(
+                          width: screenWidth,
+                          child: Text(
+                            "$ingredientQuantity ingredients",
+                            textAlign: TextAlign.left,
+                            style: mediumStyle,
+                          ),
                         ),
 
                         // Danh sách các thành phần
                         (ingredients.isEmpty)
-                            ? const Text('No ingredients')
+                            ? Text(
+                                'No ingredients',
+                                style: normalStyle,
+                              )
                             : (ListView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
@@ -282,15 +335,15 @@ class RecipesScreen extends StatelessWidget {
             ),
 
             // Comments
-            const Text(
+            Text(
               "Comments",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: mediumStyle,
             ),
 
             SizedBox(
                 child: Row(
               children: [
-                const Image(image: AssetImage('assets/user_avt.png')),
+                Image(image: AssetImage(authorAvt)),
                 const SizedBox(width: 10),
                 Expanded(
                   child: TextField(
@@ -312,7 +365,10 @@ class RecipesScreen extends StatelessWidget {
 
             // Danh sách các comment
             comments.isEmpty
-                ? const Text('No comments')
+                ? Text(
+                    'No comments',
+                    style: normalStyle,
+                  )
                 : Container(
                     margin: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 10),
@@ -336,4 +392,10 @@ class RecipesScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class CookingDuration {
+  int time;
+  String unit;
+  CookingDuration({required this.time, required this.unit});
 }

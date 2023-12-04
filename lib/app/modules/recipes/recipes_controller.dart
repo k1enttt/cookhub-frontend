@@ -104,4 +104,7 @@ class RecipesController extends GetxController {
 
   // Step view là true, ingredient view là false
   RxBool isStepsViewOrIngredientView = true.obs;
+
+  // Số lượng món ăn không thể < 0
+  RxInt dishQuantity = 1.obs;
 }
