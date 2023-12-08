@@ -3,7 +3,6 @@ import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SliderItem extends StatelessWidget {
   const SliderItem({super.key});

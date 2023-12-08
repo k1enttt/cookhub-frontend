@@ -1,7 +1,6 @@
 import 'package:cookhub_frontend/app/modules/home/home_controller.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
-import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
