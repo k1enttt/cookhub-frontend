@@ -18,8 +18,14 @@ class TImages {
 
   // Login images
   static const String loginImage = 'assets/images/login_images/login_image.png';
+
+  // Home images
+  static const String food_1Image = 'assets/images/home/food_1.png';
+  static const String avatar_1Image = 'assets/images/home/avatar/hieu.png';
 }
 
 class TIcons {
   static const String mailIcon = 'assets/icons/mail.svg';
+  static const String bellIcon = 'assets/icons/bell.svg';
+  static const String arrow_left_smIcon = 'assets/icons/arrow_left_sm.svg';
 }

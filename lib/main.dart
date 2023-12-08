@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/modules/onboarding/screens/onboarding_screen.dart';
+import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:cookhub_frontend/core/theme/theme.dart';
 import 'package:cookhub_frontend/core/utils/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const OnboardingScreen(),
+      home: HomeScreen(),
     );
   }
 }

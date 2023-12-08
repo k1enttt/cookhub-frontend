@@ -38,6 +38,7 @@ class TTextTheme {
     ),
     bodyMedium: TextStyle(
       fontSize: TSizes.bodyMedium,
+      fontWeight: FontWeight.w100,
     ),
     bodySmall: TextStyle(
       fontSize: TSizes.bodyNormal,

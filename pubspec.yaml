@@ -72,8 +72,12 @@ flutter:
     - assets/images/on_boarding_images/on_boarding_cookbook.png
     - assets/images/on_boarding_images/on_boarding_shopping.png
     - assets/images/login_images/login_image.png
+    - assets/images/home/food_1.png
+    - assets/images/home/avatar/hieu.png
     - assets/logos/logo-circle.svg
     - assets/icons/mail.svg
+    - assets/icons/bell.svg
+    - assets/icons/arrow_left_sm.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

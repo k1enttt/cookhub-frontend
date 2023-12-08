@@ -4,9 +4,7 @@ import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
-import 'package:cookhub_frontend/core/utils/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -29,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+
     final UserCredential userCredential =
         await auth.signInWithCredential(credential);
   }
@@ -39,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (ctx) => const HomeScreen(),
+          builder: (ctx) => HomeScreen(),
         ),
       );
     }
@@ -119,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (ctx) => const HomeScreen(),
+                                  builder: (ctx) => HomeScreen(),
                                 ),
                               );
                             }
