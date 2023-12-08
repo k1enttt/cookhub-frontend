@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
+import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
 
 class IngredientItem extends StatelessWidget {
@@ -25,15 +26,14 @@ class IngredientItem extends StatelessWidget {
             ),
             Text(
               ingredients[index].name,
-              style:
-                  const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+              style: CustomTextStyles.normalStyle,
             ),
           ]),
         ),
         // Số lượng
         Text(
           '${ingredients[index].quantity == '' ? '' : ingredients[index].quantity}${ingredients[index].unit == '' ? '' : ' ${ingredients[index].unit}'}',
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+          style: CustomTextStyles.normalStyle,
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
+import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
 
 class StepText extends StatelessWidget {
@@ -13,7 +14,7 @@ class StepText extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Text(
         'Step ${index + 1}: ${steps[index].text}',
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+        style: CustomTextStyles.normalStyle,
       ),
     );
   }
