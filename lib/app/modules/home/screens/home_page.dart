@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: TSizes.space_16,
           ),
-          SliderWidget(),
+          const SliderWidget(),
           const SizedBox(
             height: TSizes.space_16,
           ),
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: TSizes.space_16,
           ),
-          SliderWidget(),
+          const SliderWidget(),
           const SizedBox(
             height: TSizes.space_16,
           ),
@@ -85,7 +85,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: TSizes.space_16,
           ),
-          SliderWidget(),
+          const SliderWidget(),
           const SizedBox(
             height: TSizes.space_16,
           ),
@@ -106,9 +106,13 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: TSizes.space_16,
           ),
-          SliderWidget(),
+          const SliderWidget(),
           const SizedBox(
             height: TSizes.space_16,
+          ),
+          const SliderWidget(),
+          const SizedBox(
+            height: TSizes.space_72,
           ),
         ],
       ),

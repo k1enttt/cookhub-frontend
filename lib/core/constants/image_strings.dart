@@ -28,4 +28,5 @@ class TIcons {
   static const String mailIcon = 'assets/icons/mail.svg';
   static const String bellIcon = 'assets/icons/bell.svg';
   static const String arrow_left_smIcon = 'assets/icons/arrow_left_sm.svg';
+  static const String starIcon = 'assets/icons/star.svg';
 }

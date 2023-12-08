@@ -78,6 +78,7 @@ flutter:
     - assets/icons/mail.svg
     - assets/icons/bell.svg
     - assets/icons/arrow_left_sm.svg
+    - assets/icons/star.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
