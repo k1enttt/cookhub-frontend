@@ -74,6 +74,12 @@ flutter:
     - assets/images/login_images/login_image.png
     - assets/images/home/food_1.png
     - assets/images/home/avatar/hieu.png
+    - assets/images/explore/quick_search/dinner.png
+    - assets/images/explore/quick_search/lunch.png
+    - assets/images/explore/quick_search/soup.png
+    - assets/images/explore/quick_search/thai.png
+    - assets/images/explore/quick_search/vegan.png
+    - assets/images/explore/quick_search/western.png
     - assets/logos/logo-circle.svg
     - assets/icons/mail.svg
     - assets/icons/bell.svg

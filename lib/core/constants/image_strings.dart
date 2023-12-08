@@ -22,6 +22,15 @@ class TImages {
   // Home images
   static const String food_1Image = 'assets/images/home/food_1.png';
   static const String avatar_1Image = 'assets/images/home/avatar/hieu.png';
+
+  // Explore images
+  static const String lunch = 'assets/images/explore/quick_search/lunch.png';
+  static const String vegan = 'assets/images/explore/quick_search/vegan.png';
+  static const String western =
+      'assets/images/explore/quick_search/western.png';
+  static const String soup = 'assets/images/explore/quick_search/soup.png';
+  static const String thai = 'assets/images/explore/quick_search/thai.png';
+  static const String dinner = 'assets/images/explore/quick_search/dinner.png';
 }
 
 class TIcons {
