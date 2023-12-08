@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextStyles {
@@ -24,5 +25,7 @@ class CustomTextStyles {
     fontWeight: FontWeight.normal,
     fontFamily: 'Poppins',
     height: 1.3,
+    letterSpacing: 0.2,
+    color: CustomColor.text,
   );
 }
