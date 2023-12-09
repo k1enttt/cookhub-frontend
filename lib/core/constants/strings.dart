@@ -47,4 +47,5 @@ class Strings {
   static const String russia = "Russia";
 
   static const String seeMore = "See more";
+  static const String showResult = "Show result";
 }

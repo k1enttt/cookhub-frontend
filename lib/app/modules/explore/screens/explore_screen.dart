@@ -65,17 +65,17 @@ class ExploreScreen extends StatelessWidget {
           const SizedBox(
             height: TSizes.space_16,
           ),
-          ListBody(
+          Wrap(
             children: [
               ...foodTagData.map(
                 (tagItem) => tagItem.type == 'popular'
                     ? PopularTag(
                         title: tagItem.title,
                       )
-                    : SizedBox(),
-              )
+                    : const SizedBox(),
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

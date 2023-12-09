@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/explore/screens/filter_screen.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
@@ -44,21 +45,34 @@ class SearchBarWidget extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            height: 40,
-            padding: EdgeInsets.symmetric(
-              horizontal: 8,
-            ),
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              border: Border(
-                left: BorderSide(
-                  color: ColorSelect.gray_400,
+          InkWell(
+            onTap: () => print('Hello'),
+            child: Container(
+              height: 40,
+              padding: EdgeInsets.symmetric(
+                horizontal: 8,
+              ),
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                border: Border(
+                  left: BorderSide(
+                    color: ColorSelect.gray_400,
+                  ),
                 ),
               ),
-            ),
-            child: SvgPicture.asset(
-              TIcons.adjustIcon,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (ctx) => const FilterScreen(),
+                    ),
+                  );
+                },
+                child: SvgPicture.asset(
+                  TIcons.adjustIcon,
+                ),
+              ),
             ),
           ),
         ],

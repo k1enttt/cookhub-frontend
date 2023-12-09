@@ -12,9 +12,10 @@ class PopularTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
       padding: EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 12,
+        horizontal: 12,
+        vertical: 8,
       ),
       decoration: BoxDecoration(
         border: Border.all(color: ColorSelect.secondaryColor),
