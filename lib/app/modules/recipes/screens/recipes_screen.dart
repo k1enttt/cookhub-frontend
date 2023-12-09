@@ -1,12 +1,13 @@
 import 'package:cookhub_frontend/app/data/models/comment.dart';
+import 'package:cookhub_frontend/app/data/models/cooking_duration.dart';
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
 import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
 import 'package:cookhub_frontend/app/data/models/tag.dart';
 import 'package:cookhub_frontend/app/modules/recipes/recipes_controller.dart';
-import 'package:cookhub_frontend/app/modules/recipes/widgets/comment_text.dart';
-import 'package:cookhub_frontend/app/modules/recipes/widgets/ingredient_item.dart';
-import 'package:cookhub_frontend/app/modules/recipes/widgets/step_images.dart';
-import 'package:cookhub_frontend/app/modules/recipes/widgets/step_text.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/row_comment_text.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/images_step.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/text_step.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/strings.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
@@ -24,8 +25,11 @@ class RecipesScreen extends StatelessWidget {
     // Font
     TextStyle heading2Style = CustomTextStyles.heading2Style;
     TextStyle mediumStyle = CustomTextStyles.mediumStyle;
-    TextStyle normalStyle = CustomTextStyles.normalStyle;
+    TextStyle blackNormalStyle = CustomTextStyles.normalStyle;
     TextStyle largeBoldStyle = CustomTextStyles.largeBoldStyle;
+    TextStyle whiteNormalStyle = blackNormalStyle.copyWith(color: Colors.white);
+    TextStyle textButtonStyle = blackNormalStyle.copyWith(
+        color: CustomColor.gray1, decoration: TextDecoration.underline);
 
     // Data
     String backgroundImg = 'assets/back_image.png';
@@ -48,6 +52,15 @@ class RecipesScreen extends StatelessWidget {
     List<Ingredient> ingredients = controller.ingredients;
     List<Comment> comments = controller.comments;
     List<Tag> tags = controller.tags;
+
+    // UI
+    cookingDurationText(CookingDuration cookingDuration) =>
+        Text("${cookingDuration.time} ${cookingDuration.unit}",
+            style: blackNormalStyle);
+    cookingLevelText(String cookingLevel) =>
+        Text(cookingLevel, style: blackNormalStyle);
+    ratingText(double rating, int reviewQuantity) =>
+        Text("$rating  ($reviewQuantity reviews)", style: blackNormalStyle);
 
     // Functions
     void stepsOnClick() {
@@ -88,7 +101,6 @@ class RecipesScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     // Tựa đề
-
                     Text(
                       dishName,
                       textAlign: TextAlign.center,
@@ -102,24 +114,18 @@ class RecipesScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                              "${cookingDuration.time} ${cookingDuration.unit}",
-                              style: normalStyle),
+                          cookingDurationText(cookingDuration),
                           const SizedBox(width: 14),
-                          Text("|", style: normalStyle),
+                          Text("|", style: blackNormalStyle),
                           const SizedBox(width: 14),
-                          Text(cookingLevel, style: normalStyle),
                           const SizedBox(width: 14),
-                          Text("|", style: normalStyle),
+                          cookingLevelText(cookingLevel),
                           const SizedBox(width: 14),
                           const Icon(
-                            Icons.star_border_rounded,
+                            Icons.star_rate_rounded,
                             size: 16,
                           ),
-                          Text(
-                            "$rating ($reviewQuantity reviews)",
-                            style: normalStyle,
-                          ),
+                          ratingText(rating, reviewQuantity),
                         ],
                       ),
                     ),
@@ -140,7 +146,7 @@ class RecipesScreen extends StatelessWidget {
                               horizontal: 24, vertical: 8),
                           child: Text(
                             tags[tagIndex].name,
-                            style: normalStyle,
+                            style: blackNormalStyle,
                           ),
                         ),
                       ),
@@ -172,7 +178,7 @@ class RecipesScreen extends StatelessWidget {
                                       const SizedBox(height: 3),
                                       Text(
                                         '$authorFollowers followers',
-                                        style: normalStyle,
+                                        style: blackNormalStyle,
                                       ),
                                     ],
                                   ),
@@ -189,7 +195,7 @@ class RecipesScreen extends StatelessWidget {
                             ),
                             child: Text(
                               'Follow',
-                              style: normalStyle,
+                              style: blackNormalStyle,
                             ),
                           )
                         ],
@@ -200,7 +206,7 @@ class RecipesScreen extends StatelessWidget {
                     // Mô tả
                     Text(
                       dishDescription,
-                      style: normalStyle,
+                      style: blackNormalStyle,
                     ),
                     const SizedBox(height: 26),
 
@@ -209,35 +215,48 @@ class RecipesScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          GestureDetector(
-                            onTap: stepsOnClick,
-                            child: Container(
-                              width: 170,
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[300],
-                              ),
-                              child: Text(
-                                "Steps",
-                                style: normalStyle,
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: stepsOnClick,
+                              child: Container(
+                                height: 40,
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: (isStepsViewOrIngredientsView.value)
+                                      ? CustomColor.primary
+                                      : CustomColor.gray3,
+                                ),
+                                child: Text(
+                                  "Steps",
+                                  style: (isStepsViewOrIngredientsView.value)
+                                      ? whiteNormalStyle
+                                      : blackNormalStyle,
+                                ),
                               ),
                             ),
                           ),
-                          GestureDetector(
-                            onTap: ingredientsOnClick,
-                            child: Container(
-                              width: 170,
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[300],
-                              ),
-                              child: Text(
-                                "Ingredients",
-                                style: normalStyle,
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: ingredientsOnClick,
+                              child: Container(
+                                height: 40,
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: (isStepsViewOrIngredientsView.value)
+                                      ? CustomColor.gray3
+                                      : CustomColor.primary,
+                                ),
+                                child: Text(
+                                  "Ingredients",
+                                  style: (isStepsViewOrIngredientsView.value)
+                                      ? blackNormalStyle
+                                      : whiteNormalStyle,
+                                ),
                               ),
                             ),
                           ),
@@ -253,7 +272,7 @@ class RecipesScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(bottom: 16.0),
                                 child: Text(
                                   'No steps',
-                                  style: normalStyle,
+                                  style: blackNormalStyle,
                                 ),
                               )
                             : SizedBox(
@@ -317,7 +336,7 @@ class RecipesScreen extends StatelessWidget {
                                     children: [
                                       Text(
                                         'How many servings?',
-                                        style: normalStyle,
+                                        style: blackNormalStyle,
                                       ),
 
                                       // Quantity and button to increase/decrease
@@ -370,7 +389,7 @@ class RecipesScreen extends StatelessWidget {
                                 (ingredients.isEmpty)
                                     ? Text(
                                         'No ingredients',
-                                        style: normalStyle,
+                                        style: blackNormalStyle,
                                       )
                                     : (ListView.builder(
                                         shrinkWrap: true,
@@ -392,18 +411,28 @@ class RecipesScreen extends StatelessWidget {
                           ),
 
                     // Nút xem thêm
-                    TextButton(
-                      onPressed: () {
-                        // Mở rộng nội dung Steps và Ingredients
-                      },
-                      child: const Text('View more'),
+                    SizedBox(
+                      width: screenWidth,
+                      child: TextButton(
+                        onPressed: () {
+                          // Mở rộng nội dung Steps và Ingredients
+                        },
+                        child: Text(
+                          'View more',
+                          style: textButtonStyle,
+                        ),
+                      ),
                     ),
 
                     // Comments
-                    Text(
-                      "Comments",
-                      style: heading2Style,
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Comments",
+                        style: heading2Style,
+                      ),
                     ),
+                    const SizedBox(height: 16),
 
                     SizedBox(
                         child: Row(
@@ -417,7 +446,7 @@ class RecipesScreen extends StatelessWidget {
                               isDense: true,
                               contentPadding: const EdgeInsets.all(8),
                               hintText: 'Add your comment here',
-                              hintStyle: normalStyle,
+                              hintStyle: blackNormalStyle,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(
@@ -428,31 +457,38 @@ class RecipesScreen extends StatelessWidget {
                         ),
                       ],
                     )),
+                    const SizedBox(height: 15),
 
                     // Danh sách các comment
                     comments.isEmpty
                         ? Text(
                             'No comments',
-                            style: normalStyle,
+                            style: blackNormalStyle,
                           )
-                        : Container(
-                            margin: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 10),
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: comments.length,
-                                itemBuilder: (context, index) {
-                                  return CommentText(
-                                      comments: comments, index: index);
-                                }),
-                          ),
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: comments.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: CommentText(
+                                    comments: comments, index: index),
+                              );
+                            }),
+
                     // Nút View more comments
-                    TextButton(
-                      onPressed: () {
-                        // Mở rộng nội dung Comments
-                      },
-                      child: const Text('View all 1000 comments'),
+                    SizedBox(
+                      width: screenWidth,
+                      child: TextButton(
+                        onPressed: () {
+                          // Mở rộng nội dung Comments
+                        },
+                        child: Text(
+                          'View all 1000 comments',
+                          style: textButtonStyle,
+                        ),
+                      ),
                     ),
                   ],
                 )),
@@ -461,10 +497,4 @@ class RecipesScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class CookingDuration {
-  int time;
-  String unit;
-  CookingDuration({required this.time, required this.unit});
 }

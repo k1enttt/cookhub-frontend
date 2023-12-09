@@ -64,35 +64,16 @@ class RecipesController extends GetxController {
       userName: 'Tien Da',
       userAvt: 'assets/user_avt.png',
       rate: 4,
-      body: 'This is a very good recipe. I will try it soon',
+      body:
+          'Made the authentic pho recipe and it was amazing! After roasting I put in the the pressure cooker for 60 min, and it was amazing! The closest I’ve ever tasted to what we had in Vietnam. Thanks for a great recipe',
     ),
     Comment(
       id: 2,
       userName: 'Tien Da',
       userAvt: 'assets/user_avt.png',
       rate: 2,
-      body: 'This is a very good recipe. I will try it soon',
-    ),
-    Comment(
-      id: 3,
-      userName: 'Tien Da',
-      userAvt: 'assets/user_avt.png',
-      rate: 3,
-      body: 'This is a very good recipe. I will try it soon',
-    ),
-    Comment(
-      id: 4,
-      userName: 'Tien Da',
-      userAvt: 'assets/user_avt.png',
-      rate: 5,
-      body: 'This is a very good recipe. I will try it soon',
-    ),
-    Comment(
-      id: 5,
-      userName: 'Tien Da',
-      userAvt: 'assets/user_avt.png',
-      rate: 1,
-      body: 'This is a very good recipe. I will try it soon',
+      body:
+          'Made the authentic pho recipe and it was amazing! After roasting I put in the the pressure cooker for 60 min, and it was amazing! The closest I’ve ever tasted to what we had in Vietnam. Thanks for a great recipe',
     ),
   ];
 

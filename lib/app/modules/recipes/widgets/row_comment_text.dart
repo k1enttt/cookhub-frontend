@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/data/models/comment.dart';
+import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -38,13 +39,13 @@ class CommentText extends StatelessWidget {
                           5,
                           (indexRate) {
                             Widget star = const Icon(
-                              Icons.star,
-                              color: Colors.yellow,
+                              Icons.star_rate_rounded,
+                              color: CustomColor.primary,
                               size: 16,
                             );
-                            if (indexRate > comments[index].rate) {
+                            if (indexRate >= comments[index].rate) {
                               star = const Icon(
-                                Icons.star,
+                                Icons.star_rate_rounded,
                                 color: Colors.grey,
                                 size: 16,
                               );
@@ -60,8 +61,8 @@ class CommentText extends StatelessWidget {
               ),
 
               // Nội dung
-              const Text(
-                'This is a very good recipe. I will try it soon',
+              Text(
+                comments[index].body,
                 style: CustomTextStyles.normalStyle,
               ),
             ],
