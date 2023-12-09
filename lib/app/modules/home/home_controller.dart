@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/explore/screens/explore_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/home_page.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +9,7 @@ class HomeController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const HomePage(),
-    Container(
-      color: ColorSelect.secondaryColor,
-    ),
+    const ExploreScreen(),
     Container(
       color: ColorSelect.tertiaryColor,
     ),
