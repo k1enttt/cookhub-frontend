@@ -31,6 +31,9 @@ class TImages {
   static const String soup = 'assets/images/explore/quick_search/soup.png';
   static const String thai = 'assets/images/explore/quick_search/thai.png';
   static const String dinner = 'assets/images/explore/quick_search/dinner.png';
+
+  // Add recipe images
+  static const String hat = 'assets/images/add_recipe/hat.svg';
 }
 
 class TIcons {

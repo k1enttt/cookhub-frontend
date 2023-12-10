@@ -41,6 +41,7 @@ dependencies:
   firebase_core: ^2.22.0
   firebase_auth: ^4.13.0
   google_sign_in: ^6.1.6
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,7 @@ flutter:
     - assets/images/explore/quick_search/thai.png
     - assets/images/explore/quick_search/vegan.png
     - assets/images/explore/quick_search/western.png
+    - assets/images/add_recipe/hat.svg
     - assets/logos/logo-circle.svg
     - assets/icons/mail.svg
     - assets/icons/bell.svg

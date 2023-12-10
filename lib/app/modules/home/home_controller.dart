@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/add_recipe/screen/add_recipe_screen.dart';
 import 'package:cookhub_frontend/app/modules/explore/screens/explore_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/home_page.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
@@ -10,9 +11,7 @@ class HomeController extends GetxController {
   final screens = [
     const HomePage(),
     const ExploreScreen(),
-    Container(
-      color: ColorSelect.tertiaryColor,
-    ),
+    const AddRecipeScreen(),
     Container(
       color: ColorSelect.textColor,
     ),
