@@ -57,11 +57,11 @@ class Strings {
   static const String recipeServeHeadline = "Serves";
   static const String recipeCooktimeHeadline = "Cook time";
   static const String recipeIngredientHeadline = "Ingredients";
-  static const String recipeLableName = 'Name';
+  static const String recipeLableName = "Your recipe's name";
   static const String recipeLableAmount = 'Amount';
   static const String recipeButtonIngredient = 'Ingredient';
   static const String recipeMethodHeadline = "Method";
-  static const String recipeLableMethod = "Write your description here";
+  static const String recipeDescription = "Write your description here";
   static const String recipeButtonStep = 'Step';
   static const String recipeButtonCreate = 'Create recipe';
 }

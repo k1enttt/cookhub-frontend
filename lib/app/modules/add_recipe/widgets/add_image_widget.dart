@@ -21,7 +21,7 @@ class AddImageWidget extends StatelessWidget {
           TSizes.space_24,
         ),
         child: Container(
-          width: 353,
+          width: double.infinity,
           height: 160,
           decoration: BoxDecoration(
             color: ColorSelect.gray_400,
