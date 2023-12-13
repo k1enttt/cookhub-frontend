@@ -3,7 +3,6 @@ import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_button.dart'
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_ingredient_widget.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/adjust_button.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
-import 'package:cookhub_frontend/app/modules/add_recipe/widgets/method_widget.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
@@ -227,9 +226,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           const SizedBox(
             height: TSizes.space_16,
           ),
-          AddIngredientWidget(),
-          AddIngredientWidget(),
-          AddIngredientWidget(),
+          const AddIngredientWidget(),
+          const AddIngredientWidget(),
+          const AddIngredientWidget(),
           Align(
             alignment: Alignment.center,
             child: AddButton(
@@ -250,12 +249,6 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           ),
           const SizedBox(
             height: TSizes.space_16,
-          ),
-          MethodWidget(
-            numberTitle: "1",
-          ),
-          MethodWidget(
-            numberTitle: "2",
           ),
           const SizedBox(
             height: TSizes.space_8,

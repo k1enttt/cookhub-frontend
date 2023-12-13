@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 
 class AddButton extends StatelessWidget {

@@ -1,10 +1,10 @@
+import 'package:cookhub_frontend/app/modules/add_recipe/widgets/drag_button.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
+import 'package:cookhub_frontend/app/modules/add_recipe/widgets/remove_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
-import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class MethodWidget extends StatefulWidget {
   const MethodWidget({
@@ -31,6 +31,7 @@ class _MethodWidgetState extends State<MethodWidget> {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,11 +48,7 @@ class _MethodWidgetState extends State<MethodWidget> {
                       ),
                     ),
                   ),
-                  SvgPicture.asset(
-                    TIcons.dragIcon,
-                    width: TSizes.space_24,
-                    height: TSizes.space_24,
-                  ),
+                  const DragButton(),
                 ],
               ),
               InputWidget(
@@ -61,11 +58,7 @@ class _MethodWidgetState extends State<MethodWidget> {
                 label: Strings.recipeDescription,
                 inputType: TextInputType.text,
               ),
-              SvgPicture.asset(
-                TIcons.closeIcon,
-                width: TSizes.space_24,
-                height: TSizes.space_24,
-              ),
+              const RemoveButton(),
             ],
           ),
         ],

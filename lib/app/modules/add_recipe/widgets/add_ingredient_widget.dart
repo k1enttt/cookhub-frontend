@@ -1,9 +1,9 @@
+import 'package:cookhub_frontend/app/modules/add_recipe/widgets/drag_button.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
-import 'package:cookhub_frontend/core/constants/image_strings.dart';
+import 'package:cookhub_frontend/app/modules/add_recipe/widgets/remove_button.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class AddIngredientWidget extends StatefulWidget {
   const AddIngredientWidget({super.key});
@@ -23,11 +23,7 @@ class _AddIngredientWidgetState extends State<AddIngredientWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-              TIcons.dragIcon,
-              width: TSizes.space_24,
-              height: TSizes.space_24,
-            ),
+            DragButton(),
             InputWidget(
               controller: _nameIngredientController,
               inputType: TextInputType.name,
@@ -40,11 +36,7 @@ class _AddIngredientWidgetState extends State<AddIngredientWidget> {
               width: 136,
               label: Strings.recipeLableAmount,
             ),
-            SvgPicture.asset(
-              TIcons.closeIcon,
-              width: TSizes.space_24,
-              height: TSizes.space_24,
-            ),
+            RemoveButton(),
           ],
         ),
         const SizedBox(
