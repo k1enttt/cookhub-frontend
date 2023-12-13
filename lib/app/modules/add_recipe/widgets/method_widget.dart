@@ -28,6 +28,7 @@ class _MethodWidgetState extends State<MethodWidget> {
         vertical: TSizes.space_8,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,12 +52,34 @@ class _MethodWidgetState extends State<MethodWidget> {
                   const DragButton(),
                 ],
               ),
-              InputWidget(
-                controller: _descriptionController,
-                width: buttonWidth,
-                height: null,
-                label: Strings.recipeDescription,
-                inputType: TextInputType.text,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InputWidget(
+                    controller: _descriptionController,
+                    width: buttonWidth,
+                    height: null,
+                    label: Strings.recipeDescription,
+                    inputType: TextInputType.text,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: TSizes.space_8,
+                    ),
+                    width: 88,
+                    height: 64,
+                    decoration: BoxDecoration(
+                      color: ColorSelect.gray_400,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.camera_alt_outlined,
+                        color: ColorSelect.gray_100,
+                      ),
+                    ),
+                  )
+                ],
               ),
               const RemoveButton(),
             ],
