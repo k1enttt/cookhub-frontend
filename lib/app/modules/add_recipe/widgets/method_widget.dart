@@ -63,7 +63,7 @@ class _MethodWidgetState extends State<MethodWidget> {
                     inputType: TextInputType.text,
                   ),
                   Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       top: TSizes.space_8,
                     ),
                     width: 88,

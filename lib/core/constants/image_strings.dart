@@ -44,4 +44,5 @@ class TIcons {
   static const String adjustIcon = 'assets/icons/adjust.svg';
   static const String dragIcon = 'assets/icons/drag.svg';
   static const String closeIcon = 'assets/icons/close.svg';
+  static const String settingIcon = 'assets/icons/setting.svg';
 }

@@ -23,7 +23,7 @@ class _AddIngredientWidgetState extends State<AddIngredientWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            DragButton(),
+            const DragButton(),
             InputWidget(
               controller: _nameIngredientController,
               inputType: TextInputType.name,
@@ -36,7 +36,7 @@ class _AddIngredientWidgetState extends State<AddIngredientWidget> {
               width: 136,
               label: Strings.recipeLableAmount,
             ),
-            RemoveButton(),
+            const RemoveButton(),
           ],
         ),
         const SizedBox(
