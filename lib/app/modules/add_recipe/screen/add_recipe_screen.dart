@@ -1,6 +1,9 @@
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_image_widget.dart';
+import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_button.dart';
+import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_ingredient_widget.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/adjust_button.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
+import 'package:cookhub_frontend/app/modules/add_recipe/widgets/method_widget.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
@@ -80,7 +83,6 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           InputWidget(
             controller: _nameController,
             width: double.infinity,
-            height: 48,
             label: Strings.recipeLableName,
             inputType: TextInputType.text,
             maxLength: 50,
@@ -114,7 +116,6 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               _countLengthString();
             }),
             width: double.infinity,
-            // height: 72, // Recheck
             label: Strings.recipeDescription,
             inputType: TextInputType.text,
             maxLength: 50,
@@ -177,9 +178,10 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                     width: 32,
                     height: 32,
                     maxLength: 2,
+                    time: true,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: TSizes.space_8,
                       right: TSizes.space_16,
                     ),
@@ -196,9 +198,10 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                     width: 32,
                     height: 32,
                     maxLength: 2,
+                    time: true,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: TSizes.space_8,
                     ),
                     child: Text(
@@ -224,6 +227,21 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           const SizedBox(
             height: TSizes.space_16,
           ),
+          AddIngredientWidget(),
+          AddIngredientWidget(),
+          AddIngredientWidget(),
+          Align(
+            alignment: Alignment.center,
+            child: AddButton(
+              width: 134,
+              height: 40,
+              icon: Icons.add,
+              buttonTitle: Strings.recipeButtonIngredient,
+              buttonColor: ColorSelect.secondaryColor,
+              contentColor: Colors.white,
+              borderRadius: 32,
+            ),
+          ),
           Text(
             Strings.recipeMethodHeadline,
             style: TTextTheme.lightTextTheme.headlineMedium!.copyWith(
@@ -232,6 +250,38 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           ),
           const SizedBox(
             height: TSizes.space_16,
+          ),
+          MethodWidget(
+            numberTitle: "1",
+          ),
+          MethodWidget(
+            numberTitle: "2",
+          ),
+          const SizedBox(
+            height: TSizes.space_8,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: AddButton(
+              width: 93,
+              height: 40,
+              buttonTitle: Strings.recipeStepButton,
+              icon: Icons.add,
+              buttonColor: ColorSelect.secondaryColor,
+              contentColor: Colors.white,
+              borderRadius: 32,
+            ),
+          ),
+          const SizedBox(
+            height: TSizes.space_32,
+          ),
+          AddButton(
+            width: double.infinity,
+            height: 56,
+            borderRadius: 32,
+            buttonTitle: Strings.recipeButtonCreate,
+            buttonColor: ColorSelect.primaryColor,
+            contentColor: Colors.white,
           ),
         ],
       ),

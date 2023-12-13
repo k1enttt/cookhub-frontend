@@ -42,4 +42,6 @@ class TIcons {
   static const String arrow_left_smIcon = 'assets/icons/arrow_left_sm.svg';
   static const String starIcon = 'assets/icons/star.svg';
   static const String adjustIcon = 'assets/icons/adjust.svg';
+  static const String dragIcon = 'assets/icons/drag.svg';
+  static const String closeIcon = 'assets/icons/close.svg';
 }

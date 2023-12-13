@@ -46,12 +46,12 @@ class ExploreScreen extends StatelessWidget {
             children: [
               for (int i = 0; i < 2; i++)
                 Container(
-                  margin: EdgeInsets.symmetric(
+                  margin: const EdgeInsets.symmetric(
                     vertical: 8,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [for (int i = 0; i < 3; i++) QuickSearchWidget()],
+                    children: [for (int i = 0; i < 3; i++) const QuickSearchWidget()],
                   ),
                 ),
             ],

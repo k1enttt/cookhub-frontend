@@ -34,7 +34,7 @@ class SliderItem extends StatelessWidget {
                   top: 16,
                   left: 16,
                   child: Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 4,
                       vertical: 6,
                     ),
@@ -55,7 +55,7 @@ class SliderItem extends StatelessWidget {
                   right: 16,
                   bottom: 16,
                   child: Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 6,
                       vertical: 6,
                     ),
@@ -84,7 +84,7 @@ class SliderItem extends StatelessWidget {
               ],
             ),
             Container(
-              margin: EdgeInsets.symmetric(
+              margin: const EdgeInsets.symmetric(
                 vertical: 8,
               ),
               child: Text(
@@ -97,10 +97,10 @@ class SliderItem extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     right: 4,
                   ),
-                  child: SizedBox(
+                  child: const SizedBox(
                     height: 24,
                     width: 24,
                     child: CircleAvatar(

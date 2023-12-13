@@ -1,4 +1,3 @@
-import 'package:cookhub_frontend/app/modules/explore/screens/explore_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:cookhub_frontend/core/theme/theme.dart';
 import 'package:cookhub_frontend/core/utils/firebase_options.dart';

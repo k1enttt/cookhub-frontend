@@ -10,10 +10,11 @@ class InputWidget extends StatelessWidget {
     this.obscureText = false,
     required this.inputType,
     this.width = 0,
-    this.height = 48,
-    this.maxLength = 50,
+    this.height,
+    this.maxLength,
     this.maxLine = 1,
     this.onChanged,
+    this.time,
   });
 
   final TextEditingController controller;
@@ -21,9 +22,10 @@ class InputWidget extends StatelessWidget {
   final bool obscureText;
   final TextInputType inputType;
   final double width;
-  final double height;
-  final int maxLength;
+  final double? height;
+  final int? maxLength;
   final int maxLine;
+  final bool? time;
   final Function(String)? onChanged;
 
   @override
@@ -39,9 +41,9 @@ class InputWidget extends StatelessWidget {
         onChanged: onChanged,
         enabled: true,
         controller: controller,
-        maxLength: maxLength.toInt(),
+        maxLength: maxLength?.toInt(),
         minLines: 1,
-        maxLines: maxLine,
+        maxLines: null,
         obscureText: obscureText,
         keyboardType: inputType,
         textAlign: TextAlign.start,
@@ -50,7 +52,7 @@ class InputWidget extends StatelessWidget {
         ),
         cursorColor: ColorSelect.textColor,
         decoration: InputDecoration(
-          isDense: true,
+          contentPadding: time == true ? const EdgeInsets.only(left: 6) : null,
           labelText: label,
           counterText: "",
           labelStyle: TTextTheme.lightTextTheme.bodySmall!.copyWith(

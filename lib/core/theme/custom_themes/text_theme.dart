@@ -48,5 +48,5 @@ class TTextTheme {
     bodyColor: Colors.white,
     fontFamily: GoogleFonts.poppins().fontFamily,
   );
-  static TextTheme darkTextTheme = TextTheme();
+  static TextTheme darkTextTheme = const TextTheme();
 }

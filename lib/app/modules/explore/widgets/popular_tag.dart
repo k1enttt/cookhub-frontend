@@ -12,8 +12,8 @@ class PopularTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+      padding: const EdgeInsets.symmetric(
         horizontal: 12,
         vertical: 8,
       ),

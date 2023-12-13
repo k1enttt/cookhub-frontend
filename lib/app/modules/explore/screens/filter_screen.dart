@@ -31,7 +31,7 @@ class _FilterScreenState extends State<FilterScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 18,
         ),
         child: Column(
@@ -175,12 +175,12 @@ class _FilterScreenState extends State<FilterScreen> {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 bottom: TSizes.space_16,
               ),
-              child: MyButton(),
+              child: const MyButton(),
             ),
           ],
         ),

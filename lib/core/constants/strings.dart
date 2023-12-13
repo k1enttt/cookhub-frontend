@@ -64,4 +64,6 @@ class Strings {
   static const String recipeDescription = "Write your description here";
   static const String recipeButtonStep = 'Step';
   static const String recipeButtonCreate = 'Create recipe';
+  static const String recipeIngredientName = 'Name';
+  static const String recipeStepButton = 'Step';
 }

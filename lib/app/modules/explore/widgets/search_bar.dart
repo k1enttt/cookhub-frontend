@@ -49,7 +49,7 @@ class SearchBarWidget extends StatelessWidget {
             onTap: () => print('Hello'),
             child: Container(
               height: 40,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 8,
               ),
               decoration: BoxDecoration(
