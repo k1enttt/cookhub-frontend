@@ -31,12 +31,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 18.0,
-        ),
-        child: NavigationMenu(),
-      ),
+      body: NavigationMenu(),
     );
   }
 }

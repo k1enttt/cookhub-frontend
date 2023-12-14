@@ -12,71 +12,78 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              'Explore',
-              style: TTextTheme.lightTextTheme.displayLarge!.copyWith(
-                color: Colors.black,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: TSizes.space_24,
-          ),
-          const SearchBarWidget(),
-          const SizedBox(
-            height: TSizes.space_24,
-          ),
-          Text(
-            'Quick search',
-            style: TTextTheme.lightTextTheme.displaySmall!.copyWith(
-              color: ColorSelect.textColor,
-            ),
-          ),
-          const SizedBox(
-            height: TSizes.space_16,
-          ),
-          Column(
-            children: [
-              for (int i = 0; i < 2; i++)
-                Container(
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 8,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [for (int i = 0; i < 3; i++) const QuickSearchWidget()],
-                  ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 18.0,
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                'Explore',
+                style: TTextTheme.lightTextTheme.displayLarge!.copyWith(
+                  color: Colors.black,
                 ),
-            ],
-          ),
-          Text(
-            'Popular tags',
-            style: TTextTheme.lightTextTheme.displaySmall!.copyWith(
-              color: ColorSelect.textColor,
-            ),
-          ),
-          const SizedBox(
-            height: TSizes.space_16,
-          ),
-          Wrap(
-            children: [
-              ...foodTagData.map(
-                (tagItem) => tagItem.type == 'popular'
-                    ? PopularTag(
-                        title: tagItem.title,
-                      )
-                    : const SizedBox(),
               ),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(
+              height: TSizes.space_24,
+            ),
+            const SearchBarWidget(),
+            const SizedBox(
+              height: TSizes.space_24,
+            ),
+            Text(
+              'Quick search',
+              style: TTextTheme.lightTextTheme.displaySmall!.copyWith(
+                color: ColorSelect.textColor,
+              ),
+            ),
+            const SizedBox(
+              height: TSizes.space_16,
+            ),
+            Column(
+              children: [
+                for (int i = 0; i < 2; i++)
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        for (int i = 0; i < 3; i++) const QuickSearchWidget()
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+            Text(
+              'Popular tags',
+              style: TTextTheme.lightTextTheme.displaySmall!.copyWith(
+                color: ColorSelect.textColor,
+              ),
+            ),
+            const SizedBox(
+              height: TSizes.space_16,
+            ),
+            Wrap(
+              children: [
+                ...foodTagData.map(
+                  (tagItem) => tagItem.type == 'popular'
+                      ? PopularTag(
+                          title: tagItem.title,
+                        )
+                      : const SizedBox(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
