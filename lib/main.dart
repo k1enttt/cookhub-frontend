@@ -1,4 +1,7 @@
+import 'package:cookhub_frontend/app/modules/grocery_lists/screens/recipe_detail_screen.dart';
 import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
+import 'package:cookhub_frontend/app/modules/grocery_lists/screens/grocery_screen.dart';
+import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const RecipesScreen(),
+      // home: const RecipeDetailScreen(),
+      home: const GroceryScreen(),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/comment.dart';
 import 'package:cookhub_frontend/app/data/models/cooking_duration.dart';
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
@@ -49,7 +50,7 @@ class RecipesScreen extends StatelessWidget {
     RxBool isStepsViewOrIngredientsView =
         controller.isStepsViewOrIngredientView;
     List<RecipeStep> steps = controller.steps;
-    List<Ingredient> ingredients = controller.ingredients;
+    List<Ingredient> ingredients = MyData.ingredients;
     List<Comment> comments = controller.comments;
     List<Tag> tags = controller.tags;
 
