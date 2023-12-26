@@ -14,6 +14,12 @@ class CustomTextStyles {
     fontFamily: 'Poppins',
     height: 1.3,
   );
+  static const TextStyle heading3Style = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Poppins',
+    height: 1.5,
+  );
   static const TextStyle heading4Style = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
@@ -31,6 +37,13 @@ class CustomTextStyles {
     fontWeight: FontWeight.bold,
     fontFamily: 'Poppins',
     height: 1.3,
+  );
+  static const TextStyle largeStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+    fontFamily: 'Poppins',
+    height: 1.3,
+    letterSpacing: 0.2,
   );
   static const TextStyle mediumStyle = TextStyle(
     fontSize: 14,

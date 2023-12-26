@@ -50,7 +50,7 @@ class RecipesScreen extends StatelessWidget {
     RxBool isStepsViewOrIngredientsView =
         controller.isStepsViewOrIngredientView;
     List<RecipeStep> steps = controller.steps;
-    List<Ingredient> ingredients = MyData.ingredients;
+    RxList<Ingredient> ingredients = controller.ingredientsList;
     List<Comment> comments = controller.comments;
     List<Tag> tags = controller.tags;
 

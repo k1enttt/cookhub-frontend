@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/comment.dart';
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
 import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
@@ -58,6 +59,9 @@ class RecipesController extends GetxController {
           'Made the authentic pho recipe and it was amazing! After roasting I put in the the pressure cooker for 60 min, and it was amazing! The closest I’ve ever tasted to what we had in Vietnam. Thanks for a great recipe',
     ),
   ];
+
+  // Thành phần
+  RxList<Ingredient> ingredientsList = MyData.ingredients.obs;
 
   // Thẻ tag
   List<Tag> tags = [

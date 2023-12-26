@@ -183,12 +183,7 @@ class GroceryScreen extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: recipeCards.length,
                   itemBuilder: (context, index) {
-                    return RecipeCard(
-                        image: recipeCards[index].image,
-                        name: recipeCards[index].name,
-                        totleIngredients: recipeCards[index].totleIngredients,
-                        haveIngredients: recipeCards[index].haveIngredients,
-                        isDone: recipeCards[index].isDone);
+                    return RecipeCard(recipe: recipeCards[index]);
                   },
                 ),
               )

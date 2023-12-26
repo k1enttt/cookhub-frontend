@@ -1,21 +1,13 @@
+import 'package:cookhub_frontend/app/data/models/recipe.dart';
+import 'package:cookhub_frontend/app/modules/grocery_lists/screens/recipe_detail_screen.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard({
-    super.key,
-    required this.image,
-    required this.name,
-    required this.totleIngredients,
-    required this.haveIngredients,
-    required this.isDone,
-  });
-  final String image;
-  final String name;
-  final int totleIngredients;
-  final int haveIngredients;
-  final bool isDone;
+  const RecipeCard({super.key, required this.recipe});
+  final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +30,31 @@ class RecipeCard extends StatelessWidget {
       elevation: 0,
       child: ListTile(
         leading: Image.asset(
-          image,
+          recipe.image,
           width: 88,
           height: 88,
         ),
         title: Text(
-          name,
+          recipe.name,
           style: recipesName,
         ),
         subtitle: Text(
-          "$haveIngredients/$totleIngredients ingredients",
+          "${recipe.haveIngredients}/${recipe.totleIngredients} ingredients",
           style: grayNormalText,
         ),
-        trailing: (isDone)
+        trailing: (recipe.isDone)
             ? const Icon(
                 Icons.done_rounded,
                 color: secondaryColor,
                 size: 24,
               )
             : const SizedBox(),
-        onTap: () => debugPrint("ListTile pressed"),
+        onTap: () {
+          debugPrint("ListTile pressed");
+          Get.to(() => const RecipeDetailScreen(), arguments: {
+            'isRecipeDetail': true,
+          });
+        },
       ),
     );
   }
