@@ -1,5 +1,5 @@
 import 'package:cookhub_frontend/app/data/data.dart';
-import 'package:cookhub_frontend/app/data/models/ingredient.dart';
+import 'package:cookhub_frontend/app/data/models/recipe.dart';
 import 'package:cookhub_frontend/app/modules/grocery_lists/grocery_controller.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
@@ -9,45 +9,60 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RecipeDetailScreen extends StatelessWidget {
-  const RecipeDetailScreen({super.key});
+  const RecipeDetailScreen({super.key, required this.recipeIndex});
+  final int recipeIndex;
 
   @override
   Widget build(BuildContext context) {
     GroceryController controller = Get.find<GroceryController>();
+    Recipe recipe = MyData.recipeCards[recipeIndex];
 
     // Color
-    const Color primaryColor = CustomColor.primary;
     const Color gray1 = CustomColor.gray1;
-    const Color gray3 = CustomColor.gray3;
 
     // Text style
     const TextStyle heading3 = CustomTextStyles.heading3Style;
-    const TextStyle largeText = CustomTextStyles.largeBoldStyle;
     TextStyle grayLargeText = CustomTextStyles.largeStyle.copyWith(
       color: gray1,
     );
 
-    RxList<Ingredient> ingredients = controller.ingredientsList;
+    RxInt haveIngredients = RxInt(recipe.haveIngredients);
+
     return SafeArea(
       child: Scaffold(
         body: Stack(children: [
           // BODY
+          const Image(image: AssetImage(CustomImages.recipeBackground)),
           ListView(
             children: [
               // IMAGE
-              const Image(image: AssetImage(CustomImages.recipeBackground)),
-
+              const SizedBox(
+                height: 390,
+              ),
               // DESCRIPTION
               Container(
+                // border have curve top left and top right
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24),
+                  ),
+                ),
                 padding:
                     const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
                 child: Column(
                   children: [
+                    // Recipe name
                     const Text(
                       "Vietnamese Pho",
                       style: heading3,
                     ),
-                    Text("5/25 ingredients", style: grayLargeText),
+                    // Recipe description
+                    Obx(() => Text(
+                        "${haveIngredients.value}/${recipe.totleIngredients} ingredients",
+                        style: grayLargeText)),
+                    // INGREDIENTS
                     SizedBox(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,16 +76,22 @@ class RecipeDetailScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 11,
                               ),
-                              Text("2 serves", style: grayLargeText),
+                              Obx(
+                                () => Text(
+                                    "${MyData.dishQuantity.value} serves",
+                                    style: grayLargeText),
+                              ),
                             ],
                           ),
                           Row(
-                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               // Decrease and increase button
                               IconButton(
-                                onPressed: () =>
-                                    debugPrint("Decrease button clicked"),
+                                onPressed: () {
+                                  if (MyData.dishQuantity.value > 1) {
+                                    MyData.dishQuantity.value--;
+                                  }
+                                },
                                 icon: const Icon(
                                   Icons.remove_circle,
                                   color: CustomColor.primary,
@@ -81,7 +102,7 @@ class RecipeDetailScreen extends StatelessWidget {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  debugPrint("Increase button clicked");
+                                  MyData.dishQuantity.value++;
                                 },
                                 icon: const Icon(
                                   Icons.add_circle,
@@ -103,12 +124,20 @@ class RecipeDetailScreen extends StatelessWidget {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: ingredients.length,
+                      itemCount: recipe.ingredients.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.only(bottom: 16),
-                          child: IngredientItem(
-                              ingredients: ingredients, index: index),
+                        return GestureDetector(
+                          onTap: () {
+                            haveIngredients.value = recipe.haveIngredients;
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 16),
+                            child: IngredientItem(
+                              recipeId: recipeIndex,
+                              indexOfIngredient: index,
+                              haveIngredientsObs: haveIngredients,
+                            ),
+                          ),
                         );
                       },
                     ),
@@ -126,7 +155,9 @@ class RecipeDetailScreen extends StatelessWidget {
                 debugPrint("Back button pressed");
                 Get.back();
               },
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_circle_left),
+              color: Colors.white,
+              iconSize: 32,
             ),
           ),
         ]),

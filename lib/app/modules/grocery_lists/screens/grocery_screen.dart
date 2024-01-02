@@ -1,8 +1,8 @@
+import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/recipe.dart';
 import 'package:cookhub_frontend/app/modules/grocery_lists/grocery_controller.dart';
 import 'package:cookhub_frontend/app/modules/grocery_lists/widgets/card_recipe.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
-import 'package:cookhub_frontend/core/values/images.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,8 +31,8 @@ class GroceryScreen extends StatelessWidget {
     );
     const TextStyle heading5 = CustomTextStyles.heading5Style;
 
+    List<Recipe> recipeCards = MyData.recipeCards;
     // Data
-    List<Recipe> recipeCards = GroceryController.recipeCards;
 
     return SafeArea(
       child: Scaffold(
@@ -183,7 +183,7 @@ class GroceryScreen extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: recipeCards.length,
                   itemBuilder: (context, index) {
-                    return RecipeCard(recipe: recipeCards[index]);
+                    return RecipeCard(recipeIndex: index);
                   },
                 ),
               )

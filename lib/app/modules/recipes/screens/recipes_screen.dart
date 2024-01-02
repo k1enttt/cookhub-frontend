@@ -45,7 +45,7 @@ class RecipesScreen extends StatelessWidget {
     String cookingLevel = 'Medium';
     double rating = 4.6;
     int reviewQuantity = 16;
-    RxInt dishQuantity = controller.dishQuantity;
+    RxInt dishQuantity = MyData.dishQuantity;
     int ingredientQuantity = 15;
     RxBool isStepsViewOrIngredientsView =
         controller.isStepsViewOrIngredientView;
@@ -402,8 +402,9 @@ class RecipesScreen extends StatelessWidget {
                                             margin: const EdgeInsets.only(
                                                 bottom: 16),
                                             child: IngredientItem(
-                                                ingredients: ingredients,
-                                                index: index),
+                                              recipeId: index,
+                                              indexOfIngredient: index,
+                                            ),
                                           );
                                         },
                                       )),
