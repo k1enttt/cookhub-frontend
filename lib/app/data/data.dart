@@ -102,9 +102,9 @@ class MyData {
       id: 0,
       image: CustomImages.recipeAvatar,
       name: "Vietnamese Pho",
-      totleIngredients: 25,
+      totleIngredients: 14,
       haveIngredients: 0,
-      isDone: true,
+      isDone: false,
       ingredients: [
         Ingredient(
           id: 0,
@@ -201,7 +201,7 @@ class MyData {
       id: 1,
       image: CustomImages.recipeAvatar,
       name: "Vietnamese Pho",
-      totleIngredients: 25,
+      totleIngredients: 14,
       haveIngredients: 0,
       isDone: false,
       ingredients: [
@@ -298,15 +298,14 @@ class MyData {
     ),
   ];
 
+  // static List<Date>
+
   // Số lượng món ăn không thể < 0
   static RxInt dishQuantity = 1.obs;
 
   // Hàm này nhận vào danh sách thành phần, vị trí của thành phần và trạng thái của checkbox, cập nhật danh sách đã tồn tại
   static RxList<Ingredient> updateIsDoneIngredients(
       int ingredientId, bool state, int recipeId) {
-    //*[LÍ DO XẢY RA BUG]
-    // Do biến List ingredientList được truyền vào có giá trị isDone toàn bộ là False
-    // Nên mỗi lần bấm checkbox mới thì chỉ có cập nhật checkbox sau cùng
     RxList<Ingredient> result = RxList<Ingredient>();
     for (int i = 0; i < recipeCards[recipeId].ingredients.length; i++) {
       if (i == ingredientId) {
@@ -333,5 +332,31 @@ class MyData {
     int newHaveIngredients,
   ) {
     recipeCards[recipeId].haveIngredients = newHaveIngredients;
+  }
+
+  // Lấy tổng số lượng thành phần của món ăn
+  static int getTotalIngredients(int recipeId) {
+    return recipeCards[recipeId].ingredients.length;
+  }
+
+  // Lấy số lượng thành phần đã có của món ăn
+  static int getHaveIngredients(int recipeId) {
+    return recipeCards[recipeId].haveIngredients;
+  }
+
+  // Trả về true nếu món ăn đã hoàn thành
+  static bool isRecipeDone(int recipeId, RxBool isDone) {
+    int currentHaveIngredient = getHaveIngredients(recipeId);
+    int totalIngredients = getTotalIngredients(recipeId);
+    if (currentHaveIngredient == totalIngredients) {
+      // Cập nhật vào database
+      recipeCards[recipeId].isDone = true;
+      // Cập nhật trên UI
+      isDone.value = true;
+      return true;
+    }
+    isDone.value = false;
+    recipeCards[recipeId].isDone = false;
+    return false;
   }
 }

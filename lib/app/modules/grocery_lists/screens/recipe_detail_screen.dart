@@ -24,7 +24,7 @@ class RecipeDetailScreen extends StatelessWidget {
       color: gray1,
     );
 
-    RxInt haveIngredients = RxInt(recipe.haveIngredients);
+    RxInt haveIngredients = Get.arguments['haveIngredients'] ?? 0.obs;
 
     return SafeArea(
       child: Scaffold(

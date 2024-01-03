@@ -37,7 +37,7 @@ class IngredientItem extends StatelessWidget {
         (isRecipeDetail) ? grayLargeText : CustomTextStyles.normalStyle;
 
     // a function get a index and state of checkbox, return a list of ingredient with index checked
-    void getIngredients(value) {
+    void onTap(value) {
       // Cập nhật trạng thái của thành phần
       // ? [BUG] Tại sao ingredients lại không được cập nhật?
       MyData.updateIsDoneIngredients(indexOfIngredient, value, recipeId);
@@ -51,29 +51,23 @@ class IngredientItem extends StatelessWidget {
       }
 
       // Cập nhật số lượng thành phần hiện có cho món ăn
-      MyData.updateHaveIngredients(
-          Get.arguments['recipeId'], haveIngredientsObs!.value);
+      MyData.updateHaveIngredients(recipeId, haveIngredientsObs!.value);
+
+      // Kiểm tra món ăn đã đủ thành phần chưa
+      RxBool isDone = Get.arguments['isDone'] ?? false.obs;
+      MyData.isRecipeDone(recipeId, isDone);
     }
 
     return GestureDetector(
       onTap: () {
-        // Cập nhật thành phần isDone cho món ăn
         debugPrint("Ingredient Item pressed");
-        //* [BUG] - FIXED
-        // Khi bấm nhiều thành phần thì các checkbox được tick
-        // nhưng khi thoát ra vào lại trang Chi tiết thành phần thì chỉ lưu lại trạng thái cuối của thành phần cuối
-        // Ví dụ: bấm các thành phần có thứ tự 1, 5, 3, 6; thì khi thoát ra vào lại trang thì chỉ có ô checkbox của thành phần 6 được tick
-
-        // * Nguồn gốc
-        // Có thể là do biến ingredients là biến obs của một
-        getIngredients(!ingredients[indexOfIngredient].isDone);
+        // Cập nhật thành phần isDone cho món ăn
+        onTap(!ingredients[indexOfIngredient].isDone);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Checkbox + Tên thành phần
-          //* Bấm checkbox thì tăng số lượng thành phần đã có
-          // Checkbox load lại trạng thái cuối cùng
           SizedBox(
             child: Row(children: [
               SizedBox(
@@ -91,7 +85,7 @@ class IngredientItem extends StatelessWidget {
                     activeColor: CustomColor.secondary,
                     onChanged: (value) {
                       debugPrint("Checkbox pressed");
-                      getIngredients(!ingredients[indexOfIngredient].isDone);
+                      onTap(!ingredients[indexOfIngredient].isDone);
                     },
                   ),
                 ),

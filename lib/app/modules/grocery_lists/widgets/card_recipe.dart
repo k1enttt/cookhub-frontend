@@ -33,40 +33,46 @@ class RecipeCard extends StatelessWidget {
 
     // Data
     RxInt haveIngredients = RxInt(recipe.haveIngredients);
+    RxBool isDone = RxBool(recipe.isDone);
 
     return Card(
       elevation: 0,
-      child: ListTile(
-        leading: Image.asset(
-          recipe.image,
-          width: 88,
-          height: 88,
+      child: Obx(
+        () => ListTile(
+          leading: Image.asset(
+            recipe.image,
+            width: 88,
+            height: 88,
+          ),
+          title: Text(
+            recipe.name,
+            style: recipesName,
+          ),
+          subtitle: Obx(
+            () => Text(
+              "${haveIngredients.value}/${recipe.totleIngredients} ingredients",
+              style: grayNormalText,
+            ),
+          ),
+          trailing: (isDone.value)
+              ? const Icon(
+                  Icons.done_rounded,
+                  color: secondaryColor,
+                  size: 24,
+                )
+              : const SizedBox(),
+          onTap: () {
+            debugPrint("ListTile pressed");
+            Get.to(
+              () => RecipeDetailScreen(recipeIndex: recipeIndex),
+              arguments: {
+                'isRecipeDetail': true,
+                'haveIngredients': haveIngredients,
+                'isDone': isDone,
+              },
+            );
+          },
         ),
-        title: Text(
-          recipe.name,
-          style: recipesName,
-        ),
-        subtitle: Text(
-          "${haveIngredients.value}/${recipe.totleIngredients} ingredients",
-          style: grayNormalText,
-        ),
-        trailing: (recipe.isDone)
-            ? const Icon(
-                Icons.done_rounded,
-                color: secondaryColor,
-                size: 24,
-              )
-            : const SizedBox(),
-        onTap: () {
-          debugPrint("ListTile pressed");
-          Get.to(
-            () => RecipeDetailScreen(recipeIndex: recipeIndex),
-            arguments: {
-              'isRecipeDetail': true,
-              'recipeId': recipe.id,
-            },
-          );
-        },
       ),
     );
   }
