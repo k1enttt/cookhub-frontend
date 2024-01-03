@@ -1,6 +1,6 @@
 import 'package:cookhub_frontend/app/data/data.dart';
+import 'package:cookhub_frontend/app/data/models/date_model.dart';
 import 'package:cookhub_frontend/app/data/models/recipe.dart';
-import 'package:cookhub_frontend/app/modules/grocery_lists/grocery_controller.dart';
 import 'package:cookhub_frontend/app/modules/grocery_lists/widgets/card_recipe.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
@@ -12,8 +12,6 @@ class GroceryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GroceryController controller = Get.put(GroceryController());
-
     // Color
     const Color secondaryColor = CustomColor.secondary;
     const Color gray2 = CustomColor.gray2;
@@ -33,6 +31,7 @@ class GroceryScreen extends StatelessWidget {
 
     List<Recipe> recipeCards = MyData.recipeCards;
     // Data
+    RxList<Date> dates = MyData.getDate().obs;
 
     return SafeArea(
       child: Scaffold(
@@ -65,114 +64,52 @@ class GroceryScreen extends StatelessWidget {
               SizedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      child: Column(
-                        children: [
-                          const Text(
-                            "SUN",
-                            style: heading5,
-                          ),
-                          Text(
-                            "24",
-                            style: grayHeading4,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: secondaryColor,
-                            width: 2,
+                  children: List.generate(
+                    dates.length,
+                    (index) {
+                      return GestureDetector(
+                        onTap: () => {
+                          debugPrint("Date pressed"),
+                          dates.value = MyData.updateSelectedDay(index),
+                        },
+                        child: Obx(
+                          () => Container(
+                            decoration: (dates[index].isSelected)
+                                ? const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: secondaryColor,
+                                        width: 2,
+                                      ),
+                                    ),
+                                  )
+                                : const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 2,
+                                      ),
+                                    ),
+                                  ),
+                            child: Column(
+                              children: [
+                                Text(
+                                  dates[index].alias.toUpperCase(),
+                                  style: heading5,
+                                ),
+                                Text(
+                                  dates[index].day,
+                                  style: (dates[index].isSelected)
+                                      ? heading4
+                                      : grayHeading4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      child: Column(
-                        children: const [
-                          Text(
-                            "MON",
-                            style: heading5,
-                          ),
-                          Text(
-                            "25",
-                            style: heading4,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      child: Column(
-                        children: [
-                          const Text(
-                            "TUE",
-                            style: heading5,
-                          ),
-                          Text(
-                            "26",
-                            style: grayHeading4,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      child: Column(
-                        children: [
-                          const Text(
-                            "WED",
-                            style: heading5,
-                          ),
-                          Text(
-                            "27",
-                            style: grayHeading4,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      child: Column(
-                        children: [
-                          const Text(
-                            "THI",
-                            style: heading5,
-                          ),
-                          Text(
-                            "28",
-                            style: grayHeading4,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      child: Column(
-                        children: [
-                          const Text(
-                            "FRI",
-                            style: heading5,
-                          ),
-                          Text(
-                            "29",
-                            style: grayHeading4,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      child: Column(
-                        children: [
-                          const Text(
-                            "SAT",
-                            style: heading5,
-                          ),
-                          Text(
-                            "30",
-                            style: grayHeading4,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                      );
+                    },
+                  ),
                 ),
               ),
               const SizedBox(
