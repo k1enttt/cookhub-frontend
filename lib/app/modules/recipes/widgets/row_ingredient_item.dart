@@ -1,6 +1,6 @@
 import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
-import 'package:cookhub_frontend/app/modules/recipes/recipes_controller.dart';
+import 'package:cookhub_frontend/app/data/models/recipe.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 class IngredientItem extends StatelessWidget {
   const IngredientItem(
       {super.key,
-      required this.indexOfIngredient,
       required this.recipeId,
+      required this.indexOfIngredient,
       this.haveIngredientsObs});
 
   final int recipeId;
@@ -19,12 +19,11 @@ class IngredientItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RecipesController controller = Get.put(RecipesController());
     const Color gray1 = CustomColor.gray1;
     const Color gray3 = CustomColor.gray3;
 
-    RxList<Ingredient> ingredients =
-        MyData.recipeCards[recipeId].ingredients.obs;
+    RxList<Recipe> recipeList = MyData.recipeCards.obs;
+    RxList<Ingredient> ingredients = recipeList[recipeId].ingredients.obs;
 
     // Text style
     bool isRecipeDetail = Get.arguments['isRecipeDetail'] ?? false;
@@ -39,8 +38,10 @@ class IngredientItem extends StatelessWidget {
 
     // a function get a index and state of checkbox, return a list of ingredient with index checked
     void getIngredients(value) {
-      ingredients(MyData.getIngredients(
-          ingredients, indexOfIngredient, value, recipeId));
+      // Cập nhật trạng thái của thành phần
+      // ? [BUG] Tại sao ingredients lại không được cập nhật?
+      MyData.updateIsDoneIngredients(indexOfIngredient, value, recipeId);
+      ingredients.value = MyData.recipeCards[recipeId].ingredients;
 
       // Không phải màn hình chi tiết món ăn thì không cần cập nhật số lượng
       if (ingredients[indexOfIngredient].isDone) {
@@ -48,6 +49,7 @@ class IngredientItem extends StatelessWidget {
       } else {
         haveIngredientsObs!.value--;
       }
+
       // Cập nhật số lượng thành phần hiện có cho món ăn
       MyData.updateHaveIngredients(
           Get.arguments['recipeId'], haveIngredientsObs!.value);
@@ -57,13 +59,20 @@ class IngredientItem extends StatelessWidget {
       onTap: () {
         // Cập nhật thành phần isDone cho món ăn
         debugPrint("Ingredient Item pressed");
+        //* [BUG] - FIXED
+        // Khi bấm nhiều thành phần thì các checkbox được tick
+        // nhưng khi thoát ra vào lại trang Chi tiết thành phần thì chỉ lưu lại trạng thái cuối của thành phần cuối
+        // Ví dụ: bấm các thành phần có thứ tự 1, 5, 3, 6; thì khi thoát ra vào lại trang thì chỉ có ô checkbox của thành phần 6 được tick
+
+        // * Nguồn gốc
+        // Có thể là do biến ingredients là biến obs của một
         getIngredients(!ingredients[indexOfIngredient].isDone);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Checkbox + Tên thành phần
-          // TODO: Bấm checkbox thì tăng số lượng thành phần đã có
+          //* Bấm checkbox thì tăng số lượng thành phần đã có
           // Checkbox load lại trạng thái cuối cùng
           SizedBox(
             child: Row(children: [

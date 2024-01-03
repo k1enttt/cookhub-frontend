@@ -1,6 +1,5 @@
 import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/recipe.dart';
-import 'package:cookhub_frontend/app/modules/grocery_lists/grocery_controller.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/images.dart';
@@ -14,7 +13,6 @@ class RecipeDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GroceryController controller = Get.find<GroceryController>();
     Recipe recipe = MyData.recipeCards[recipeIndex];
 
     // Color

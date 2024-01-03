@@ -9,5 +9,5 @@ class Ingredient extends Object {
       required this.name,
       this.quantity = '',
       this.unit = '',
-      this.isDone = false});
+      required this.isDone});
 }
