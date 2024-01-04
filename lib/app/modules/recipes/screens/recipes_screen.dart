@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/comment.dart';
 import 'package:cookhub_frontend/app/data/models/cooking_duration.dart';
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
@@ -44,12 +45,12 @@ class RecipesScreen extends StatelessWidget {
     String cookingLevel = 'Medium';
     double rating = 4.6;
     int reviewQuantity = 16;
-    RxInt dishQuantity = controller.dishQuantity;
+    RxInt dishQuantity = MyData.dishQuantity;
     int ingredientQuantity = 15;
     RxBool isStepsViewOrIngredientsView =
         controller.isStepsViewOrIngredientView;
     List<RecipeStep> steps = controller.steps;
-    List<Ingredient> ingredients = controller.ingredients;
+    RxList<Ingredient> ingredients = controller.ingredientsList;
     List<Comment> comments = controller.comments;
     List<Tag> tags = controller.tags;
 
@@ -401,8 +402,9 @@ class RecipesScreen extends StatelessWidget {
                                             margin: const EdgeInsets.only(
                                                 bottom: 16),
                                             child: IngredientItem(
-                                                ingredients: ingredients,
-                                                index: index),
+                                              recipeId: index,
+                                              indexOfIngredient: index,
+                                            ),
                                           );
                                         },
                                       )),
