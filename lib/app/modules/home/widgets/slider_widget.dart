@@ -1,8 +1,6 @@
 import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/slide_item.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class SliderWidget extends StatefulWidget {
   const SliderWidget({super.key, required this.postData});
