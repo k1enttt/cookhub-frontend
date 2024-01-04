@@ -1,0 +1,107 @@
+import 'package:cookhub_frontend/app/data/models/comment.dart';
+import 'package:cookhub_frontend/app/data/models/ingredient.dart';
+import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
+import 'package:cookhub_frontend/app/data/models/tag.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+
+class RecipesController extends GetxController {
+  // Controllers
+  TextEditingController commentController = TextEditingController();
+
+  // Bước thực hiện
+  List<RecipeStep> steps = [
+    RecipeStep(
+      text:
+          'Place the bones and beef chuck in large stockpot and add water to cover. Bring to a boil and boil for 5 minutes. Drain in a colander and thoroughly clean the stockpot. This process removes any impurities/scum and will give you a much cleaner broth.',
+    ),
+    RecipeStep(
+      text:
+          'Meanwhile, char your ginger and onions. Use tongs to hold the ginger and onions (one at a time) over an open flame, or place each directly on a gas burner. Turn until they’re lightly blackened and fragrant, about 5 minutes. Rinse away all the blackened skins.',
+    ),
+    RecipeStep(
+      text:
+          'Add water (5 quarts/4.75 L, or more/less if you\'ve scaled the recipe up or down) to the stockpot and bring to a boil. Transfer the bones and meat back to the pot, along with the charred/cleaned ginger and onions. Add the scallions, fish sauce and sugar. Reduce the heat to low, and simmer until the beef chuck is tender, about 40 minutes. Skim the surface often to remove any foam and fat.',
+      images: ['assets/steps_3_imgs_1.png'],
+    ),
+    RecipeStep(
+      text:
+          'Remove one piece of the chuck and transfer to a bowl of ice water to stop the cooking process. Then transfer this piece of beef to a container and refrigerate (you will slice this to serve with your pho later. If you were to leave it in the pot, it would be too dry to eat). Leave the other piece of chuck in the pot to flavor the broth.',
+    ),
+    RecipeStep(
+      text:
+          'Remove one piece of the chuck and transfer to a bowl of ice water to stop the cooking process. Then transfer this piece of beef to a container and refrigerate (you will slice this to serve with your pho later. If you were to leave it in the pot, it would be too dry to eat). Leave the other piece of chuck in the pot to flavor the broth.',
+      images: const [
+        'assets/steps_5_imgs_1.png',
+        'assets/steps_5_imgs_2.png',
+        'assets/steps_5_imgs_3.png',
+      ],
+    ),
+  ];
+
+  // Thành phần
+  List<Ingredient> ingredients = [
+    Ingredient(name: 'Beef bones', quantity: '500', unit: 'pounds'),
+    Ingredient(name: 'Yellow onions', quantity: '2'),
+    Ingredient(name: 'Ginger', quantity: '100', unit: 'g'),
+    Ingredient(name: 'Beef chuck', quantity: '5', unit: 'pounds'),
+    Ingredient(name: 'Fish sauce', quantity: '1/2', unit: 'cup'),
+    Ingredient(name: 'Water', quantity: '5', unit: 'quart'),
+    Ingredient(name: 'Rock Sugar', quantity: '21/2', unit: 'ounces'),
+    Ingredient(name: 'Cinnamon stick', quantity: '1'),
+    Ingredient(name: 'Fennel seeds', quantity: '2', unit: 'teaspoon'),
+    Ingredient(name: 'Salt', quantity: '1', unit: 'teaspoon'),
+    Ingredient(name: 'Star anise', quantity: '8'),
+    Ingredient(name: 'Slided chilli'),
+    Ingredient(name: 'Spring onion'),
+    Ingredient(name: 'Cilantro'),
+  ];
+
+  // Bình luận
+  List<Comment> comments = [
+    Comment(
+      id: 1,
+      userName: 'Tien Da',
+      userAvt: 'assets/user_avt.png',
+      rate: 4,
+      body: 'This is a very good recipe. I will try it soon',
+    ),
+    Comment(
+      id: 2,
+      userName: 'Tien Da',
+      userAvt: 'assets/user_avt.png',
+      rate: 2,
+      body: 'This is a very good recipe. I will try it soon',
+    ),
+    Comment(
+      id: 3,
+      userName: 'Tien Da',
+      userAvt: 'assets/user_avt.png',
+      rate: 3,
+      body: 'This is a very good recipe. I will try it soon',
+    ),
+    Comment(
+      id: 4,
+      userName: 'Tien Da',
+      userAvt: 'assets/user_avt.png',
+      rate: 5,
+      body: 'This is a very good recipe. I will try it soon',
+    ),
+    Comment(
+      id: 5,
+      userName: 'Tien Da',
+      userAvt: 'assets/user_avt.png',
+      rate: 1,
+      body: 'This is a very good recipe. I will try it soon',
+    ),
+  ];
+
+  // Thẻ tag
+  List<Tag> tags = [
+    Tag(id: 0, name: 'Vietnamese'),
+    Tag(id: 1, name: 'Main dish'),
+  ];
+
+  // Step view là true, ingredient view là false
+  RxBool isStepsViewOrIngredientView = true.obs;
+}
