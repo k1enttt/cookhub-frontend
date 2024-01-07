@@ -26,6 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           ClipRect(
@@ -55,230 +56,236 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           SafeArea(
             child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: _width * 0.15,
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        Strings.signUpTitle,
-                        style: TTextTheme.lightTextTheme.displayLarge,
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: TSizes.space_16,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: _width * 0.15,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Column(
                       children: [
-                        SizedBox(
-                          height: _width * 0.05,
-                        ),
                         Text(
-                          Strings.usernameTitle,
-                          style: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_8,
-                        ),
-                        InputWidget(
-                          controller: _usernameController,
-                          width: double.infinity,
-                          height: 48,
-                          label: Strings.enterUsername,
-                          inputType: TextInputType.text,
-                          maxLine: 1,
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_16,
-                        ),
-                        Text(
-                          Strings.signUpEmail,
-                          style: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_8,
-                        ),
-                        InputWidget(
-                          controller: _emailController,
-                          width: double.infinity,
-                          height: 48,
-                          label: Strings.enterEmail,
-                          inputType: TextInputType.text,
-                          maxLine: 1,
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_16,
-                        ),
-                        Text(
-                          Strings.passTitle,
-                          style: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_8,
-                        ),
-                        InputWidget(
-                          controller: _passwordController,
-                          width: double.infinity,
-                          height: 48,
-                          label: Strings.enterPassword,
-                          inputType: TextInputType.text,
-                          maxLine: 1,
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_16,
-                        ),
-                        Text(
-                          Strings.passConfirmTitle,
-                          style: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_8,
-                        ),
-                        InputWidget(
-                          controller: _passConfirmController,
-                          width: double.infinity,
-                          height: 48,
-                          label: Strings.enterPassConfirm,
-                          inputType: TextInputType.text,
-                          maxLine: 1,
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_32,
-                        ),
-                        DefaultButton(
-                          btnTitle: Strings.signUpBtnTitle,
-                          width: double.infinity,
-                          btnIcon: Container(),
-                          btnBackground: ColorSelect.primaryColor,
-                          btnBorder: Colors.transparent,
-                          labelColor: Colors.white,
-                          onClick: () {},
-                        ),
-                        SizedBox(
-                          height: _width * 0.1,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: _width * 0.28,
-                              height: 2,
-                              decoration: BoxDecoration(
-                                color: ColorSelect.gray_200,
-                              ),
-                            ),
-                            Text(
-                              Strings.continueTitle,
-                              style: TTextTheme.lightTextTheme.bodyMedium!
-                                  .copyWith(
-                                color: ColorSelect.gray_200,
-                              ),
-                            ),
-                            Container(
-                              width: _width * 0.28,
-                              height: 2,
-                              decoration: BoxDecoration(
-                                color: ColorSelect.gray_200,
-                              ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_8,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            DefaultButton(
-                              btnTitle: '',
-                              width: _width * 0.25,
-                              btnIcon: SvgPicture.asset(TImages.googleLogo),
-                              btnBackground: Colors.white,
-                              btnBorder: Colors.transparent,
-                              labelColor: Colors.white,
-                              onClick: () {},
-                            ),
-                            const SizedBox(
-                              width: TSizes.space_16,
-                            ),
-                            DefaultButton(
-                              btnTitle: '',
-                              width: _width * 0.25,
-                              btnIcon: SvgPicture.asset(TImages.facebookLogo),
-                              btnBackground: Colors.white,
-                              btnBorder: Colors.transparent,
-                              labelColor: Colors.white,
-                              onClick: () {},
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: _width * 0.1,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              Strings.alreadyHaveAccount,
-                              style:
-                                  TTextTheme.lightTextTheme.bodySmall!.copyWith(
-                                letterSpacing: 0.2,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (ctx) => const SignInScreen(),
-                                  ),
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(TSizes.space_8),
-                                child: Text(
-                                  Strings.login,
-                                  style: TTextTheme.lightTextTheme.bodySmall!
-                                      .copyWith(
-                                    color: ColorSelect.primaryColor,
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: ColorSelect.primaryColor,
-                                    decorationThickness: 2,
-                                    letterSpacing: 0.2,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: TSizes.space_32,
+                          Strings.signUpTitle,
+                          style: TTextTheme.lightTextTheme.displayLarge,
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: TSizes.space_16,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: _width * 0.05,
+                          ),
+                          Text(
+                            Strings.usernameTitle,
+                            style:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_8,
+                          ),
+                          InputWidget(
+                            controller: _usernameController,
+                            width: double.infinity,
+                            height: 48,
+                            label: Strings.enterUsername,
+                            inputType: TextInputType.text,
+                            maxLine: 1,
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_16,
+                          ),
+                          Text(
+                            Strings.signUpEmail,
+                            style:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_8,
+                          ),
+                          InputWidget(
+                            controller: _emailController,
+                            width: double.infinity,
+                            height: 48,
+                            label: Strings.enterEmail,
+                            inputType: TextInputType.text,
+                            maxLine: 1,
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_16,
+                          ),
+                          Text(
+                            Strings.passTitle,
+                            style:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_8,
+                          ),
+                          InputWidget(
+                            controller: _passwordController,
+                            width: double.infinity,
+                            height: 48,
+                            label: Strings.enterPassword,
+                            inputType: TextInputType.text,
+                            maxLine: 1,
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_16,
+                          ),
+                          Text(
+                            Strings.passConfirmTitle,
+                            style:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_8,
+                          ),
+                          InputWidget(
+                            controller: _passConfirmController,
+                            width: double.infinity,
+                            height: 48,
+                            label: Strings.enterPassConfirm,
+                            inputType: TextInputType.text,
+                            maxLine: 1,
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_32,
+                          ),
+                          DefaultButton(
+                            btnTitle: Strings.signUpBtnTitle,
+                            width: double.infinity,
+                            btnIcon: Container(),
+                            btnBackground: ColorSelect.primaryColor,
+                            btnBorder: Colors.transparent,
+                            labelColor: Colors.white,
+                            onClick: () {},
+                          ),
+                          SizedBox(
+                            height: _width * 0.1,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: _width * 0.28,
+                                height: 2,
+                                decoration: BoxDecoration(
+                                  color: ColorSelect.gray_200,
+                                ),
+                              ),
+                              Text(
+                                Strings.continueTitle,
+                                style: TTextTheme.lightTextTheme.bodyMedium!
+                                    .copyWith(
+                                  color: ColorSelect.gray_200,
+                                ),
+                              ),
+                              Container(
+                                width: _width * 0.28,
+                                height: 2,
+                                decoration: BoxDecoration(
+                                  color: ColorSelect.gray_200,
+                                ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_8,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DefaultButton(
+                                btnTitle: '',
+                                width: _width * 0.25,
+                                btnIcon: SvgPicture.asset(TImages.googleLogo),
+                                btnBackground: Colors.white,
+                                btnBorder: Colors.transparent,
+                                labelColor: Colors.white,
+                                onClick: () {},
+                              ),
+                              const SizedBox(
+                                width: TSizes.space_16,
+                              ),
+                              DefaultButton(
+                                btnTitle: '',
+                                width: _width * 0.25,
+                                btnIcon: SvgPicture.asset(TImages.facebookLogo),
+                                btnBackground: Colors.white,
+                                btnBorder: Colors.transparent,
+                                labelColor: Colors.white,
+                                onClick: () {},
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: _width * 0.1,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                Strings.alreadyHaveAccount,
+                                style: TTextTheme.lightTextTheme.bodySmall!
+                                    .copyWith(
+                                  letterSpacing: 0.2,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (ctx) => const SignInScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(TSizes.space_8),
+                                  child: Text(
+                                    Strings.login,
+                                    style: TTextTheme.lightTextTheme.bodySmall!
+                                        .copyWith(
+                                      color: ColorSelect.primaryColor,
+                                      decoration: TextDecoration.underline,
+                                      decorationColor: ColorSelect.primaryColor,
+                                      decorationThickness: 2,
+                                      letterSpacing: 0.2,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: TSizes.space_32,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

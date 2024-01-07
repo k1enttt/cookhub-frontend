@@ -24,6 +24,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           ClipRect(
