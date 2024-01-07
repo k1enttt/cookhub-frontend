@@ -1,6 +1,27 @@
 class Strings {
   static const String appName = 'CookHub';
   static const String hello = 'Hello';
+  static const String alreadyHaveAccount = 'Already have an account?';
+  static const String dontHaveAccount = "Don't have an account?";
+  static const String login = 'Log in';
+  static const String signup = 'Sign up';
+  static const String usernameTitle = 'Username';
+  static const String passTitle = 'Password';
+  static const String passConfirmTitle = 'Confirm password';
+
+  // Signup Screen
+  static const String signUpTitle = 'Sign up';
+  static const String signUpEmail = 'Email';
+  static const String signUpBtnTitle = 'Create account';
+  static const String continueTitle = 'Or continue with';
+  static const String enterUsername = 'Enter username';
+  static const String enterEmail = 'Enter email';
+  static const String enterPassword = 'Enter password';
+  static const String enterPassConfirm = 'Enter confirm password';
+
+  // Login Screen
+  static const String forgotPass = 'Forgot password?';
+  static const String loginBtnTitle = 'Log in';
 
   // Explore Screen
   static const String exploreTitle = 'Explore';

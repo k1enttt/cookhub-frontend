@@ -10,7 +10,9 @@ class DefaultButton extends StatelessWidget {
     required this.btnBorder,
     required this.btnBackground,
     required this.labelColor,
-    required this.goToHomePage,
+    this.onClick,
+    this.width = 0,
+    this.height = 0,
   });
 
   final String btnTitle;
@@ -18,17 +20,19 @@ class DefaultButton extends StatelessWidget {
   final Color btnBorder;
   final Color btnBackground;
   final Color labelColor;
-  final void Function() goToHomePage;
+  final double? width;
+  final double? height;
+  final void Function()? onClick;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: SizedBox(
-        width: double.infinity,
+        width: width,
         height: TSizes.defaultBtnH,
         child: ElevatedButton(
-          onPressed: goToHomePage,
+          onPressed: onClick,
           style: ElevatedButton.styleFrom(
             backgroundColor: btnBackground,
             side: BorderSide(
@@ -39,7 +43,8 @@ class DefaultButton extends StatelessWidget {
           child: Stack(
             children: [
               Align(
-                alignment: Alignment.centerLeft,
+                alignment:
+                    btnTitle != '' ? Alignment.centerLeft : Alignment.center,
                 child: btnIcon,
               ),
               Align(
