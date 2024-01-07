@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
+import 'package:cookhub_frontend/app/modules/login_signup/screens/forgot_password_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signup_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
@@ -89,6 +90,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           height: TSizes.space_8,
                         ),
                         InputWidget(
+                          textStyle:
+                              TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                            color: ColorSelect.textColor,
+                          ),
                           controller: _usernameController,
                           width: double.infinity,
                           height: 48,
@@ -110,12 +115,45 @@ class _SignInScreenState extends State<SignInScreen> {
                           height: TSizes.space_8,
                         ),
                         InputWidget(
+                          textStyle:
+                              TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                            color: ColorSelect.textColor,
+                          ),
                           controller: _passwordController,
                           width: double.infinity,
                           height: 48,
                           label: Strings.enterPassword,
                           inputType: TextInputType.text,
                           maxLine: 1,
+                        ),
+                        const SizedBox(
+                          height: TSizes.space_8,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (ctx) =>
+                                        const ForgotPasswordScreen(),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(TSizes.space_8),
+                                child: Text(
+                                  Strings.forgotPass,
+                                  style: TTextTheme.lightTextTheme.bodySmall!
+                                      .copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(
                           height: TSizes.space_32,

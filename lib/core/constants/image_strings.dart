@@ -19,6 +19,12 @@ class TImages {
   // Login images
   static const String loginImage = 'assets/images/login_images/login_image.png';
 
+  // Verification images
+  static const String forgotPassImage =
+      'assets/images/verification_images/forgot_password.png';
+  static const String otpImage =
+      'assets/images/verification_images/otp_verification.png';
+
   // Home images
   static const String food_1Image = 'assets/images/home/food_1.png';
   static const String avatar_1Image = 'assets/images/home/avatar/hieu.png';

@@ -93,6 +93,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: TSizes.space_8,
                           ),
                           InputWidget(
+                            textStyle:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              color: ColorSelect.textColor,
+                            ),
                             controller: _usernameController,
                             width: double.infinity,
                             height: 48,
@@ -115,6 +119,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: TSizes.space_8,
                           ),
                           InputWidget(
+                            textStyle:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              color: ColorSelect.textColor,
+                            ),
                             controller: _emailController,
                             width: double.infinity,
                             height: 48,
@@ -137,6 +145,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: TSizes.space_8,
                           ),
                           InputWidget(
+                            textStyle:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              color: ColorSelect.textColor,
+                            ),
                             controller: _passwordController,
                             width: double.infinity,
                             height: 48,
@@ -159,6 +171,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: TSizes.space_8,
                           ),
                           InputWidget(
+                            textStyle:
+                                TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                              color: ColorSelect.textColor,
+                            ),
                             controller: _passConfirmController,
                             width: double.infinity,
                             height: 48,

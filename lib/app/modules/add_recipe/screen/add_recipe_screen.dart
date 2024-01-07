@@ -85,6 +85,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               height: TSizes.space_16,
             ),
             InputWidget(
+              textStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                color: ColorSelect.textColor,
+              ),
               controller: _nameController,
               width: double.infinity,
               label: Strings.recipeLableName,
@@ -115,6 +118,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               height: TSizes.space_16,
             ),
             InputWidget(
+              textStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                color: ColorSelect.textColor,
+              ),
               controller: _descriptionController,
               onChanged: ((value) {
                 _countLengthString();
@@ -177,6 +183,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 Row(
                   children: [
                     InputWidget(
+                      textStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                        color: ColorSelect.textColor,
+                      ),
                       controller: _hourController,
                       inputType: TextInputType.number,
                       width: 32,
@@ -197,6 +206,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                       ),
                     ),
                     InputWidget(
+                      textStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                        color: ColorSelect.textColor,
+                      ),
                       controller: _minuteController,
                       inputType: TextInputType.number,
                       width: 32,

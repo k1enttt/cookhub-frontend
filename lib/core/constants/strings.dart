@@ -23,6 +23,22 @@ class Strings {
   static const String forgotPass = 'Forgot password?';
   static const String loginBtnTitle = 'Log in';
 
+  // Verification Screen
+  static const String forgotDescription =
+      "Don't worry! It occurs. Please enter your email to continue.";
+  static const String sendCodeBtnTitle = 'Send code';
+  static const String otpTitle = 'OTP verification';
+  static const String otpDescription =
+      'Enter the verification code we just sent on your email address.';
+  static const String otpBtnTitle = 'Verify';
+  static const String otpDontReceiveCode = "Didn't receive code?";
+  static const String otpResend = 'Resend';
+  static const String newPassTitle = 'Create new password';
+  static const String newPassDescription =
+      'Your new password must be unique from those previously used.';
+  static const String newPassResetBtnTitle = 'Reset password';
+  static const String newPassInputTitle = 'New password';
+
   // Explore Screen
   static const String exploreTitle = 'Explore';
   static const String filterTitle = 'Filter';
