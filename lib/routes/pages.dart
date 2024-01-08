@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class AppPages {
   static List<GetPage> pages = [
-    GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
+    GetPage(name: AppRoutes.home, page: () => HomeScreen()),
     GetPage(name: AppRoutes.recipes, page: () => const RecipesScreen()),
     GetPage(name: AppRoutes.grocery, page: () => const GroceryScreen()),
   ];

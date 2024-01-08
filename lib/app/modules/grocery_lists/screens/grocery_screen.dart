@@ -22,6 +22,7 @@ class GroceryScreen extends StatelessWidget {
       fontWeight: FontWeight.bold,
       fontFamily: 'Inter',
       height: 1.2,
+      color: Colors.black,
     );
     const TextStyle heading4 = CustomTextStyles.heading4Style;
     TextStyle grayHeading4 = CustomTextStyles.heading4Style.copyWith(
@@ -45,7 +46,10 @@ class GroceryScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Glocery", style: heading1),
+                    Text(
+                      "Glocery",
+                      style: heading1,
+                    ),
                     IconButton(
                       icon: const Icon(Icons.add),
                       color: secondaryColor,

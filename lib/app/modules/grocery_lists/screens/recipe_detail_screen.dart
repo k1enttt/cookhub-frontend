@@ -54,7 +54,7 @@ class RecipeDetailScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       // Recipe name
-                      const Text(
+                      Text(
                         "Vietnamese Pho",
                         style: heading3,
                       ),

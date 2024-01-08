@@ -44,14 +44,15 @@ class IngredientItem extends StatelessWidget {
       ingredients.value = MyData.recipeCards[recipeId].ingredients;
 
       // Không phải màn hình chi tiết món ăn thì không cần cập nhật số lượng
-      if (ingredients[indexOfIngredient].isDone) {
-        haveIngredientsObs!.value++;
-      } else {
-        haveIngredientsObs!.value--;
+      if (haveIngredientsObs != null) {
+        if (ingredients[indexOfIngredient].isDone) {
+          haveIngredientsObs!.value++;
+        } else {
+          haveIngredientsObs!.value--;
+        }
+        // Cập nhật số lượng thành phần hiện có cho món ăn
+        MyData.updateHaveIngredients(recipeId, haveIngredientsObs!.value);
       }
-
-      // Cập nhật số lượng thành phần hiện có cho món ăn
-      MyData.updateHaveIngredients(recipeId, haveIngredientsObs!.value);
 
       // Kiểm tra món ăn đã đủ thành phần chưa
       RxBool isDone = Get.arguments['isDone'] ?? false.obs;

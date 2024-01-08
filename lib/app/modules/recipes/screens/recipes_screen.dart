@@ -119,8 +119,9 @@ class RecipesScreen extends StatelessWidget {
                           const SizedBox(width: 14),
                           Text("|", style: blackNormalStyle),
                           const SizedBox(width: 14),
-                          const SizedBox(width: 14),
                           cookingLevelText(cookingLevel),
+                          const SizedBox(width: 14),
+                          Text("|", style: blackNormalStyle),
                           const SizedBox(width: 14),
                           const Icon(
                             Icons.star_rate_rounded,
@@ -402,7 +403,8 @@ class RecipesScreen extends StatelessWidget {
                                             margin: const EdgeInsets.only(
                                                 bottom: 16),
                                             child: IngredientItem(
-                                              recipeId: index,
+                                              //TODO: Index là số thứ tự thành phần, không truyền vào recipeId được
+                                              recipeId: 0,
                                               indexOfIngredient: index,
                                             ),
                                           );
@@ -443,9 +445,11 @@ class RecipesScreen extends StatelessWidget {
                         const SizedBox(width: 10),
                         Expanded(
                           child: TextField(
+                            style: const TextStyle(color: Colors.black),
                             controller: controller.commentController,
                             decoration: InputDecoration(
                               isDense: true,
+
                               contentPadding: const EdgeInsets.all(8),
                               hintText: 'Add your comment here',
                               hintStyle: blackNormalStyle,
@@ -454,6 +458,7 @@ class RecipesScreen extends StatelessWidget {
                                 borderSide: BorderSide(
                                     color: Colors.grey[300]!, width: 3.0),
                               ),
+                              // Assign black color for text that was typed in textfield
                             ),
                           ),
                         ),

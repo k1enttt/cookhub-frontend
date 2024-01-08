@@ -14,7 +14,11 @@ class SliderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(const RecipesScreen());
+        Get.to(const RecipesScreen(), arguments: {
+          'isRecipeDetail': null,
+          'isDone': null,
+          'haveIngredients': null,
+        });
       },
       child: Container(
         padding: const EdgeInsets.symmetric(
