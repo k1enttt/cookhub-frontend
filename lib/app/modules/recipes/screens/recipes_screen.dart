@@ -7,6 +7,7 @@ import 'package:cookhub_frontend/app/modules/recipes/recipes_controller.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_comment_text.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/images_step.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/shopping_day_popup.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/text_step.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/strings.dart';
@@ -26,6 +27,8 @@ class RecipesScreen extends StatelessWidget {
     TextStyle heading2Style = CustomTextStyles.heading2Style;
     TextStyle mediumStyle = CustomTextStyles.mediumStyle;
     TextStyle blackNormalStyle = CustomTextStyles.normalStyle;
+    TextStyle bigTextButton = CustomTextStyles.BigTextButtonStyle.copyWith(
+        color: CustomColor.primary);
     TextStyle largeBoldStyle = CustomTextStyles.largeBoldStyle;
     TextStyle whiteNormalStyle = blackNormalStyle.copyWith(color: Colors.white);
     TextStyle textButtonStyle = blackNormalStyle.copyWith(
@@ -118,8 +121,9 @@ class RecipesScreen extends StatelessWidget {
                           const SizedBox(width: 14),
                           Text("|", style: blackNormalStyle),
                           const SizedBox(width: 14),
-                          const SizedBox(width: 14),
                           cookingLevelText(cookingLevel),
+                          const SizedBox(width: 14),
+                          Text("|", style: blackNormalStyle),
                           const SizedBox(width: 14),
                           const Icon(
                             Icons.star_rate_rounded,
@@ -424,6 +428,34 @@ class RecipesScreen extends StatelessWidget {
                       ),
                     ),
 
+                    // Add to shopping list button
+                    GestureDetector(
+                      onTap: () => {
+                        // Display Shopping day popup
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const ShoppingDayPopup();
+                          },
+                        ),
+                      },
+                      child: Container(
+                        width: screenWidth,
+                        height: 56,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(32),
+                          border: Border.all(color: CustomColor.primary),
+                          // color: CustomColor.primary,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Add to shopping list',
+                            style: bigTextButton,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 32),
                     // Comments
                     Container(
                       alignment: Alignment.centerLeft,

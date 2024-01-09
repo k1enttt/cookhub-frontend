@@ -28,4 +28,12 @@ class CustomTextStyles {
     letterSpacing: 0.2,
     color: CustomColor.text,
   );
+  static const BigTextButtonStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Poppins',
+    height: 1.5,
+    letterSpacing: 0.2,
+    color: CustomColor.text,
+  );
 }
