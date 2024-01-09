@@ -4,6 +4,7 @@ import 'package:cookhub_frontend/app/data/models/ingredient.dart';
 import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
 import 'package:cookhub_frontend/app/data/models/tag.dart';
 import 'package:cookhub_frontend/app/modules/recipes/recipes_controller.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/comment_popup.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_comment_text.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/images_step.dart';
@@ -469,24 +470,60 @@ class RecipesScreen extends StatelessWidget {
                     SizedBox(
                         child: Row(
                       children: [
+                        // AUTHOR AVATAR
                         Image(image: AssetImage(authorAvt)),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 8),
+                        // COMMENT BUTTON
                         Expanded(
-                          child: TextField(
-                            controller: controller.commentController,
-                            decoration: InputDecoration(
-                              isDense: true,
-                              contentPadding: const EdgeInsets.all(8),
-                              hintText: 'Add your comment here',
-                              hintStyle: blackNormalStyle,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                    color: Colors.grey[300]!, width: 3.0),
+                          child: GestureDetector(
+                            onTap: () => {
+                              // Display Comment popup
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return const CommentPopup();
+                                },
+                              ),
+                            },
+                            child: Container(
+                              // width: screenWidth * 0.74,
+                              height: 40,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CustomColor.gray2, width: 1),
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Add your comment here',
+                                  style: blackNormalStyle.copyWith(
+                                    color: CustomColor.gray1,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
+                        // Expanded(
+                        //   child: TextField(
+                        //     controller: controller.commentController,
+                        //     decoration: InputDecoration(
+                        //       isDense: true,
+                        //       contentPadding: const EdgeInsets.all(8),
+                        //       hintText: 'Add your comment here',
+                        //       hintStyle: blackNormalStyle,
+                        //       border: OutlineInputBorder(
+                        //         borderRadius: BorderRadius.circular(10),
+                        //         borderSide: BorderSide(
+                        //             color: Colors.grey[300]!, width: 3.0),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        const SizedBox(width: 10),
                       ],
                     )),
                     const SizedBox(height: 15),

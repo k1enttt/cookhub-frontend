@@ -8,6 +8,12 @@ class CustomTextStyles {
     fontFamily: 'Poppins',
     height: 1.3,
   );
+  static const TextStyle heading3Style = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Poppins',
+    height: 1.5,
+  );
   static const largeBoldStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
