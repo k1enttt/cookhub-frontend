@@ -29,7 +29,6 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
 
     void _goToNextPage(Widget screen) {

@@ -94,6 +94,22 @@ flutter:
     - assets/icons/setting.svg
     - assets/images/verification_images/forgot_password.png
     - assets/images/verification_images/otp_verification.png
+    - assets/images/beginning_images/start_image.png
+    - assets/images/beginning_images/avocado_image.png
+    - assets/images/beginning_images/beef_image.png
+    - assets/images/beginning_images/broccoli_image.png
+    - assets/images/beginning_images/chicken_image.png
+    - assets/images/beginning_images/egg_image.png
+    - assets/images/beginning_images/everything_image.png
+    - assets/images/beginning_images/mushroom_image.png
+    - assets/images/beginning_images/noodle_image.png
+    - assets/images/beginning_images/pork_image.png
+    - assets/images/beginning_images/tomato_image.png
+    - assets/images/beginning_images/vegan_image.png
+    - assets/images/beginning_images/vegetarian_image.png
+    - assets/icons/carrot_grey.svg
+    - assets/icons/carrot_fill.svg
+    - assets/icons/close_fill.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

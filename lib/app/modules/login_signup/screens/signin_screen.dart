@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
+import 'package:cookhub_frontend/app/modules/beginning/screen/introduction_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/forgot_password_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signup_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
@@ -165,7 +166,14 @@ class _SignInScreenState extends State<SignInScreen> {
                           btnBackground: ColorSelect.primaryColor,
                           btnBorder: Colors.transparent,
                           labelColor: Colors.white,
-                          onClick: () {},
+                          onClick: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) => const IntroductionScreen(),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(
                           height: _width * 0.1,

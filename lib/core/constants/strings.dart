@@ -23,6 +23,19 @@ class Strings {
   static const String forgotPass = 'Forgot password?';
   static const String loginBtnTitle = 'Log in';
 
+  // Beginning Screen
+  static const String exploreBeginTitle =
+      'Explore recipes tailored to your palate';
+  static const String exploreBeginDesc =
+      'Obtain personalized recipes within a \n mere 10 seconds.';
+  static const String ingredientBeginTitle = 'Allergies to any ingedients';
+  static const String dietaryBeginTitle = 'My dietary prefernce is...';
+  static const String favorBeginTitle = 'My favorite ingredient is...';
+  static const String startedBeginBtn = 'Get started here';
+  static const String nextBeginBtn = 'Next';
+  static const String backBeginBtn = 'Back';
+  static const String exploreBeginBtn = 'Explore recipes';
+
   // Verification Screen
   static const String forgotDescription =
       "Don't worry! It occurs. Please enter your email to continue.";
