@@ -29,8 +29,8 @@ class Strings {
   static const String exploreBeginDesc =
       'Obtain personalized recipes within a \n mere 10 seconds.';
   static const String ingredientBeginTitle = 'Allergies to any ingedients';
-  static const String dietaryBeginTitle = 'My dietary prefernce is...';
-  static const String favorBeginTitle = 'My favorite ingredient is...';
+  static const String dietaryBeginTitle = 'My dietary\nprefernce is...';
+  static const String favorBeginTitle = 'My favorite\ningredient is...';
   static const String startedBeginBtn = 'Get started here';
   static const String nextBeginBtn = 'Next';
   static const String backBeginBtn = 'Back';

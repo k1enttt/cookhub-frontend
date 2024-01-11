@@ -1,3 +1,7 @@
+import 'package:cookhub_frontend/app/modules/beginning/data/beginning_data.dart';
+import 'package:cookhub_frontend/app/modules/beginning/screen/diet_begin_screen.dart';
+import 'package:cookhub_frontend/app/modules/beginning/widget/tag.dart';
+import 'package:cookhub_frontend/core/extensions/capitalize_first.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
@@ -7,13 +11,20 @@ import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class IngredientBeginScreen extends StatelessWidget {
+class IngredientBeginScreen extends StatefulWidget {
   const IngredientBeginScreen({super.key});
+
+  @override
+  State<IngredientBeginScreen> createState() => _IngredientBeginScreenState();
+}
+
+class _IngredientBeginScreenState extends State<IngredientBeginScreen> {
+  final _beginningData = beginningData;
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -41,55 +52,76 @@ class IngredientBeginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: height * 0.06,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: TSizes.space_8,
+                    ),
+                    child: SvgPicture.asset(TIcons.carrotFillIcon),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: TSizes.space_8,
+                    ),
+                    child: SvgPicture.asset(TIcons.carrotGreyIcon),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: TSizes.space_8,
+                    ),
+                    child: SvgPicture.asset(TIcons.carrotGreyIcon),
+                  ),
+                ],
               ),
-              Center(
-                child: Image.asset(
-                  TImages.introductionImage,
-                  width: width * 0.8,
+              SizedBox(
+                height: height * 0.04,
+              ),
+              Text(
+                Strings.ingredientBeginTitle,
+                style: TTextTheme.lightTextTheme.displayLarge!.copyWith(
+                  color: ColorSelect.textColor,
                 ),
               ),
               SizedBox(
-                height: height * 0.06,
+                height: height * 0.04,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.1),
-                child: Column(
-                  children: [
-                    Text(
-                      Strings.exploreBeginTitle,
-                      style: TTextTheme.lightTextTheme.displayMedium!.copyWith(
-                        color: ColorSelect.textColor,
+              Wrap(
+                children: [
+                  ..._beginningData.allergiesList.map(
+                    (allergy) => Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Tag(
+                        title: allergy["tag"]?.capitalize(),
                       ),
-                      textAlign: TextAlign.center,
                     ),
-                    SizedBox(
-                      height: height * 0.01,
-                    ),
-                    Text(
-                      Strings.exploreBeginDesc,
-                      style: TTextTheme.lightTextTheme.bodySmall!.copyWith(
-                        color: ColorSelect.textColor,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: DefaultButton(
+                    btnTitle: Strings.nextBeginBtn,
+                    width: double.infinity,
+                    btnIcon: Container(),
+                    btnBackground: ColorSelect.primaryColor,
+                    btnBorder: Colors.transparent,
+                    labelColor: Colors.white,
+                    onClick: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => const DietBeginScreen(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               SizedBox(
-                height: height * 0.2,
-              ),
-              Align(
-                child: DefaultButton(
-                  btnTitle: Strings.nextBeginBtn,
-                  width: double.infinity,
-                  btnIcon: Container(),
-                  btnBackground: ColorSelect.primaryColor,
-                  btnBorder: Colors.transparent,
-                  labelColor: Colors.white,
-                  onClick: () {},
-                ),
+                height: height * 0.04,
               ),
             ],
           ),

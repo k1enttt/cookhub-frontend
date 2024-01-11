@@ -78,26 +78,29 @@ class IntroductionScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: height * 0.2,
-              ),
-              Align(
-                child: DefaultButton(
-                  btnTitle: Strings.startedBeginBtn,
-                  width: double.infinity,
-                  btnIcon: Container(),
-                  btnBackground: ColorSelect.primaryColor,
-                  btnBorder: Colors.transparent,
-                  labelColor: Colors.white,
-                  onClick: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (ctx) => const IngredientBeginScreen(),
-                      ),
-                    );
-                  },
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: DefaultButton(
+                    btnTitle: Strings.startedBeginBtn,
+                    width: double.infinity,
+                    btnIcon: Container(),
+                    btnBackground: ColorSelect.primaryColor,
+                    btnBorder: Colors.transparent,
+                    labelColor: Colors.white,
+                    onClick: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => const IngredientBeginScreen(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
+              ),
+              SizedBox(
+                height: height * 0.04,
               ),
             ],
           ),

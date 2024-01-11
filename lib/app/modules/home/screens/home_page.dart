@@ -22,17 +22,18 @@ class _HomePageState extends State<HomePage> {
     const ipServer = 'http://34.87.90.9:8000';
     final url = Uri.parse('$ipServer/api/v1/posts?page=1&perPage=20');
     final response = await http.get(url);
-    final Map<String, dynamic> _listData = json.decode(response.body);
-    final userData = _listData["data"];
-    for (final item in userData) {
-      _postList.add(HomeModel(
-          imageUrl: item["author"]["avatar_url"],
-          title: item["content"],
-          avatarUrl: item["author"]["avatar_url"],
-          name: item["author"]["name"],
-          time: '30',
-          rate: '4.6'));
-    }
+    print(response.body);
+    // final Map<String, dynamic> _listData = json.decode(response.body);
+    // final userData = _listData["data"];
+    // for (final item in userData) {
+    //   _postList.add(HomeModel(
+    //       imageUrl: item["author"]["avatar_url"],
+    //       title: item["content"],
+    //       avatarUrl: item["author"]["avatar_url"],
+    //       name: item["author"]["name"],
+    //       time: '30',
+    //       rate: '4.6'));
+    // }
   }
 
   @override
