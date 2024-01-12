@@ -5,8 +5,8 @@ import 'package:cookhub_frontend/app/data/models/ingredient.dart';
 import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
 import 'package:cookhub_frontend/app/data/models/tag.dart';
 import 'package:cookhub_frontend/app/modules/recipes/recipes_controller.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/ingredient_item_recipe.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_comment_text.dart';
-import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/images_step.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/text_step.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
@@ -402,7 +402,7 @@ class RecipesScreen extends StatelessWidget {
                                           return Container(
                                             margin: const EdgeInsets.only(
                                                 bottom: 16),
-                                            child: IngredientItem(
+                                            child: IngredientItemRecipe(
                                               //TODO: Index là số thứ tự thành phần, không truyền vào recipeId được
                                               recipeId: 0,
                                               indexOfIngredient: index,

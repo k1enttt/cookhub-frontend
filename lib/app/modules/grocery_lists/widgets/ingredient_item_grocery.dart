@@ -6,8 +6,8 @@ import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class IngredientItem extends StatelessWidget {
-  const IngredientItem(
+class IngredientItemGrocery extends StatelessWidget {
+  const IngredientItemGrocery(
       {super.key,
       required this.recipeId,
       required this.indexOfIngredient,

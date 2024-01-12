@@ -1,7 +1,7 @@
 import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/recipe.dart';
 import 'package:cookhub_frontend/app/data/widgets/top_navigator.dart';
-import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
+import 'package:cookhub_frontend/app/modules/grocery_lists/widgets/ingredient_item_grocery.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
 import 'package:cookhub_frontend/core/values/images.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
@@ -132,7 +132,7 @@ class RecipeDetailScreen extends StatelessWidget {
                             },
                             child: Container(
                               margin: const EdgeInsets.only(bottom: 16),
-                              child: IngredientItem(
+                              child: IngredientItemGrocery(
                                 recipeId: recipeIndex,
                                 indexOfIngredient: index,
                                 haveIngredientsObs: haveIngredients,
