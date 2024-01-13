@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/global_widgets/card_skeleton.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/show_all_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/slider_widget.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<HomeModel> _postList = [];
+  RxBool isFetchData200 = false.obs;
 
   void _fetchingData() async {
     const ipServer = 'http://34.87.90.9:8000';
@@ -45,6 +47,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget twoSkeletonRow = const SizedBox(
+      child: Row(
+        children: [
+          CardSkeletonHome(),
+          SizedBox(
+            width: 8,
+          ),
+          CardSkeletonHome(),
+        ],
+      ),
+    );
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 18.0,
@@ -89,9 +103,11 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            SliderWidget(
-              postData: _postList,
-            ),
+            (isFetchData200.value)
+                ? SliderWidget(
+                    postData: _postList,
+                  )
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
@@ -119,9 +135,11 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            SliderWidget(
-              postData: _postList,
-            ),
+            (isFetchData200.value)
+                ? SliderWidget(
+                    postData: _postList,
+                  )
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
@@ -149,9 +167,11 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            SliderWidget(
-              postData: _postList,
-            ),
+            (isFetchData200.value)
+                ? SliderWidget(
+                    postData: _postList,
+                  )
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
@@ -179,15 +199,19 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            SliderWidget(
-              postData: _postList,
-            ),
+            (isFetchData200.value)
+                ? SliderWidget(
+                    postData: _postList,
+                  )
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
-            SliderWidget(
-              postData: _postList,
-            ),
+            (isFetchData200.value)
+                ? SliderWidget(
+                    postData: _postList,
+                  )
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_72,
             ),
