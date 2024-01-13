@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
@@ -5,6 +6,7 @@ import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SliderItem extends StatefulWidget {
   const SliderItem({
@@ -23,7 +25,13 @@ class _SliderItemState extends State<SliderItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(const RecipesScreen(), arguments: {
+          'isRecipeDetail': null,
+          'isDone': null,
+          'haveIngredients': null,
+        });
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: TSizes.space_8,

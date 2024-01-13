@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/home/screens/show_all_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/slider_widget.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
@@ -5,8 +6,8 @@ import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -73,8 +74,13 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.black,
                   ),
                 ),
-                SvgPicture.asset(
-                  TIcons.arrow_left_smIcon,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => const ShowAllHomeScreen());
+                  },
+                  child: SvgPicture.asset(
+                    TIcons.arrow_left_smIcon,
+                  ),
                 ),
               ],
             ),
