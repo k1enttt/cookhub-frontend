@@ -1,4 +1,4 @@
-import 'package:cookhub_frontend/app/global_widgets/card_skeleton.dart';
+import 'package:cookhub_frontend/app/global_widgets/card_skeleton_home.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/show_all_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/slider_widget.dart';
@@ -18,7 +18,40 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<HomeModel> _postList = [];
+  final List<HomeModel> _postList = const [
+    HomeModel(
+      imageUrl: "",
+      title: "Bun dau mam ca",
+      avatarUrl: "",
+      name: "Kevin",
+      time: "30",
+      rate: "5.0",
+    ),
+    HomeModel(
+      imageUrl: "",
+      title: "Bun dau mam ca",
+      avatarUrl: "",
+      name: "Kevin",
+      time: "30",
+      rate: "5.0",
+    ),
+    HomeModel(
+      imageUrl: "",
+      title: "Bun dau mam ca",
+      avatarUrl: "",
+      name: "Kevin",
+      time: "30",
+      rate: "5.0",
+    ),
+    HomeModel(
+      imageUrl: "",
+      title: "Bun dau mam ca",
+      avatarUrl: "",
+      name: "Kevin",
+      time: "30",
+      rate: "5.0",
+    ),
+  ];
   RxBool isFetchData200 = false.obs;
 
   void _fetchingData() async {
