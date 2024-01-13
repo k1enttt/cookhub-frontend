@@ -1,12 +1,13 @@
+import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/comment.dart';
 import 'package:cookhub_frontend/app/data/models/cooking_duration.dart';
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
 import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
 import 'package:cookhub_frontend/app/data/models/tag.dart';
 import 'package:cookhub_frontend/app/modules/recipes/recipes_controller.dart';
+import 'package:cookhub_frontend/app/modules/recipes/widgets/ingredient_item_recipe.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/comment_popup.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/row_comment_text.dart';
-import 'package:cookhub_frontend/app/modules/recipes/widgets/row_ingredient_item.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/images_step.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/shopping_day_popup.dart';
 import 'package:cookhub_frontend/app/modules/recipes/widgets/text_step.dart';
@@ -48,12 +49,12 @@ class RecipesScreen extends StatelessWidget {
     String cookingLevel = 'Medium';
     double rating = 4.6;
     int reviewQuantity = 16;
-    RxInt dishQuantity = controller.dishQuantity;
+    RxInt dishQuantity = MyData.dishQuantity;
     int ingredientQuantity = 15;
     RxBool isStepsViewOrIngredientsView =
         controller.isStepsViewOrIngredientView;
     List<RecipeStep> steps = controller.steps;
-    List<Ingredient> ingredients = controller.ingredients;
+    RxList<Ingredient> ingredients = controller.ingredientsList;
     List<Comment> comments = controller.comments;
     List<Tag> tags = controller.tags;
 
@@ -405,9 +406,11 @@ class RecipesScreen extends StatelessWidget {
                                           return Container(
                                             margin: const EdgeInsets.only(
                                                 bottom: 16),
-                                            child: IngredientItem(
-                                                ingredients: ingredients,
-                                                index: index),
+                                            child: IngredientItemRecipe(
+                                              //TODO: Index là số thứ tự thành phần, không truyền vào recipeId được
+                                              recipeId: 0,
+                                              indexOfIngredient: index,
+                                            ),
                                           );
                                         },
                                       )),
@@ -475,35 +478,21 @@ class RecipesScreen extends StatelessWidget {
                         const SizedBox(width: 8),
                         // COMMENT BUTTON
                         Expanded(
-                          child: GestureDetector(
-                            onTap: () => {
-                              // Display Comment popup
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return const CommentPopup();
-                                },
+                          child: TextField(
+                            style: const TextStyle(color: Colors.black),
+                            controller: controller.commentController,
+                            decoration: InputDecoration(
+                              isDense: true,
+
+                              contentPadding: const EdgeInsets.all(8),
+                              hintText: 'Add your comment here',
+                              hintStyle: blackNormalStyle,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                    color: Colors.grey[300]!, width: 3.0),
                               ),
-                            },
-                            child: Container(
-                              // width: screenWidth * 0.74,
-                              height: 40,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 8),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: CustomColor.gray2, width: 1),
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Add your comment here',
-                                  style: blackNormalStyle.copyWith(
-                                    color: CustomColor.gray1,
-                                  ),
-                                ),
-                              ),
+                              // Assign black color for text that was typed in textfield
                             ),
                           ),
                         ),
