@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cookhub_frontend">
    <application
-        android:label="cookhub_frontend"
+        android:label="CookHub"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
