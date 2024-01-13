@@ -19,6 +19,39 @@ class TImages {
   // Login images
   static const String loginImage = 'assets/images/login_images/login_image.png';
 
+  // Verification images
+  static const String forgotPassImage =
+      'assets/images/verification_images/forgot_password.png';
+  static const String otpImage =
+      'assets/images/verification_images/otp_verification.png';
+
+  // Beginning Screen
+  static const String introductionImage =
+      'assets/images/beginning_images/start_image.png';
+  static const String vegetarianImage =
+      'assets/images/beginning_images/vegetarian_image.png';
+  static const String veganImage =
+      'assets/images/beginning_images/vegan_image.png';
+  static const String everythingImage =
+      'assets/images/beginning_images/everything_image.png';
+  static const String eggImage = 'assets/images/beginning_images/egg_image.png';
+  static const String tomatoImage =
+      'assets/images/beginning_images/tomato_image.png';
+  static const String beefImage =
+      'assets/images/beginning_images/beef_image.png';
+  static const String chickenImage =
+      'assets/images/beginning_images/chicken_image.png';
+  static const String mushroomImage =
+      'assets/images/beginning_images/mushroom_image.png';
+  static const String noodleImage =
+      'assets/images/beginning_images/noodle_image.png';
+  static const String porkImage =
+      'assets/images/beginning_images/pork_image.png';
+  static const String avocadoImage =
+      'assets/images/beginning_images/avocado_image.png';
+  static const String broccoliImage =
+      'assets/images/beginning_images/broccoli_image.png';
+
   // Home images
   static const String food_1Image = 'assets/images/home/food_1.png';
   static const String avatar_1Image = 'assets/images/home/avatar/hieu.png';
@@ -45,4 +78,7 @@ class TIcons {
   static const String dragIcon = 'assets/icons/drag.svg';
   static const String closeIcon = 'assets/icons/close.svg';
   static const String settingIcon = 'assets/icons/setting.svg';
+  static const String carrotGreyIcon = 'assets/icons/carrot_grey.svg';
+  static const String carrotFillIcon = 'assets/icons/carrot_fill.svg';
+  static const String closeFillIcon = 'assets/icons/close_fill.svg';
 }

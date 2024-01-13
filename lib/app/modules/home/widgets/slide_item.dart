@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
+import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
@@ -7,9 +8,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class SliderItem extends StatelessWidget {
-  const SliderItem({super.key});
+class SliderItem extends StatefulWidget {
+  const SliderItem({
+    super.key,
+    required this.itemData,
+  });
 
+  final HomeModel itemData;
+
+  @override
+  State<SliderItem> createState() => _SliderItemState();
+}
+
+class _SliderItemState extends State<SliderItem> {
+  late HomeModel itemData = widget.itemData;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,8 +45,8 @@ class SliderItem extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Image.asset(
-                  TImages.food_1Image,
+                Image.network(
+                  widget.itemData.imageUrl,
                   width: 168,
                   height: 168,
                 ),
@@ -51,7 +63,7 @@ class SliderItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      '45 min.',
+                      '${widget.itemData.time} min.',
                       style: TextStyle(
                         color: ColorSelect.textColor,
                         fontSize: TSizes.bodyNormal,
@@ -79,7 +91,7 @@ class SliderItem extends StatelessWidget {
                           height: 12,
                         ),
                         Text(
-                          '4.6',
+                          '${widget.itemData.rate}',
                           style: TextStyle(
                             color: ColorSelect.textColor,
                             fontSize: TSizes.bodyNormal,
@@ -96,7 +108,7 @@ class SliderItem extends StatelessWidget {
                 vertical: 8,
               ),
               child: Text(
-                'Homemade Pizza',
+                '${widget.itemData.title}',
                 style: TTextTheme.lightTextTheme.headlineMedium!.copyWith(
                   color: Colors.black,
                 ),
@@ -108,18 +120,16 @@ class SliderItem extends StatelessWidget {
                   margin: const EdgeInsets.only(
                     right: 4,
                   ),
-                  child: const SizedBox(
+                  child: SizedBox(
                     height: 24,
                     width: 24,
                     child: CircleAvatar(
-                      backgroundImage: AssetImage(
-                        TImages.avatar_1Image,
-                      ),
+                      backgroundImage: NetworkImage(widget.itemData.avatarUrl),
                     ),
                   ),
                 ),
                 Text(
-                  'Nguyen Huu Hieu',
+                  '${widget.itemData.name}',
                   style: TTextTheme.lightTextTheme.bodySmall!.copyWith(
                     color: ColorSelect.primaryColor,
                   ),
