@@ -87,9 +87,6 @@ class RecipesScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(Strings.appName),
-      ),
       body: Obx(
         () => ListView(
           scrollDirection: Axis.vertical,

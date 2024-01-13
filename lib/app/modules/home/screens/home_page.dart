@@ -43,7 +43,9 @@ class HomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => const ShowAllHomeScreen());
+                    Get.to(() => ShowAllHomeScreen(
+                          title: "Trending now",
+                        ));
                   },
                   child: SvgPicture.asset(
                     TIcons.arrow_left_smIcon,
@@ -67,8 +69,15 @@ class HomePage extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SvgPicture.asset(
-                  TIcons.arrow_left_smIcon,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => ShowAllHomeScreen(
+                          title: "For you",
+                        ));
+                  },
+                  child: SvgPicture.asset(
+                    TIcons.arrow_left_smIcon,
+                  ),
                 ),
               ],
             ),
@@ -88,8 +97,15 @@ class HomePage extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SvgPicture.asset(
-                  TIcons.arrow_left_smIcon,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => ShowAllHomeScreen(
+                          title: "Cooks you may like",
+                        ));
+                  },
+                  child: SvgPicture.asset(
+                    TIcons.arrow_left_smIcon,
+                  ),
                 ),
               ],
             ),
@@ -109,8 +125,15 @@ class HomePage extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SvgPicture.asset(
-                  TIcons.arrow_left_smIcon,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => ShowAllHomeScreen(
+                          title: "Discover",
+                        ));
+                  },
+                  child: SvgPicture.asset(
+                    TIcons.arrow_left_smIcon,
+                  ),
                 ),
               ],
             ),
