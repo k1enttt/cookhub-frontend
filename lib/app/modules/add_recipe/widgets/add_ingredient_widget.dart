@@ -1,8 +1,10 @@
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/drag_button.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/remove_button.dart';
+import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
+import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class AddIngredientWidget extends StatefulWidget {
@@ -25,12 +27,18 @@ class _AddIngredientWidgetState extends State<AddIngredientWidget> {
           children: [
             const DragButton(),
             InputWidget(
+              textStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                color: ColorSelect.textColor,
+              ),
               controller: _nameIngredientController,
               inputType: TextInputType.name,
               width: 136,
               label: Strings.recipeIngredientName,
             ),
             InputWidget(
+              textStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                color: ColorSelect.textColor,
+              ),
               controller: _amountIngredientController,
               inputType: TextInputType.number,
               width: 136,

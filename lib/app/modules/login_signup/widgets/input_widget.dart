@@ -1,12 +1,11 @@
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
-import 'package:flutter/services.dart';
 
 class InputWidget extends StatelessWidget {
   const InputWidget({
     super.key,
-    this.controller,
+    required this.controller,
     this.label = '',
     this.obscureText = false,
     required this.inputType,
@@ -16,12 +15,9 @@ class InputWidget extends StatelessWidget {
     this.maxLine = 1,
     this.onChanged,
     this.time,
-    this.textAlign = TextAlign.start,
-    required this.textStyle,
-    this.inputFormatter,
   });
 
-  final TextEditingController? controller;
+  final TextEditingController controller;
   final String label;
   final bool obscureText;
   final TextInputType inputType;
@@ -31,9 +27,6 @@ class InputWidget extends StatelessWidget {
   final int maxLine;
   final bool? time;
   final Function(String)? onChanged;
-  final TextAlign textAlign;
-  final TextStyle textStyle;
-  final List<TextInputFormatter>? inputFormatter;
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +38,18 @@ class InputWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: TextField(
-        inputFormatters: inputFormatter,
         onChanged: onChanged,
         enabled: true,
         controller: controller,
         maxLength: maxLength?.toInt(),
         minLines: 1,
+        maxLines: null,
         obscureText: obscureText,
         keyboardType: inputType,
-        textAlign: textAlign,
-        style: textStyle,
+        textAlign: TextAlign.start,
+        style: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+          color: ColorSelect.textColor,
+        ),
         cursorColor: ColorSelect.textColor,
         decoration: InputDecoration(
           contentPadding: time == true ? const EdgeInsets.only(left: 6) : null,

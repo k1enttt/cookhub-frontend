@@ -13,30 +13,32 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
   List<String> tabsTitle = [
     "My recipe",
     "Saved recipe",
   ];
 
-  int current = 0;
-  double changePositionedOfLine() {
-    switch (current) {
-      case 0:
-        return 0;
-      case 1:
-        return 78;
-      default:
-        return 0;
-    }
+  @override
+  void initState() {
+    tabController = TabController(length: tabsTitle.length, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
-
     double heightHeader = heightScreen * 0.26;
+
     return Scaffold(
       body: SizedBox(
         height: heightHeader,
@@ -174,25 +176,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            DefaultTabController(
-              length: tabsTitle.length,
-              child: TabBar(
-                isScrollable: tabsTitle.length >= 4,
-                indicatorColor: ColorSelect.primaryColor,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorWeight: 3,
-                labelColor: ColorSelect.textColor,
-                labelStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
-                  color: ColorSelect.textColor,
-                ),
-                tabs: <Widget>[
-                  for (int i = 0; i < tabsTitle.length; i++)
-                    Tab(
-                      child: Text(
-                        tabsTitle[i],
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 18,
+              ),
+              child: SingleChildScrollView(
+                child: TabBar(
+                  controller: tabController,
+                  unselectedLabelStyle:
+                      TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                    color: ColorSelect.textColor,
+                  ),
+                  labelStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                    color: ColorSelect.textColor,
+                  ),
+                  indicatorWeight: 3,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicatorColor: ColorSelect.primaryColor,
+                  labelColor: ColorSelect.textColor,
+                  tabs: [
+                    for (int i = 0; i < tabsTitle.length; i++)
+                      Tab(
+                        text: tabsTitle[i],
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

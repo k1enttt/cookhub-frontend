@@ -1,4 +1,6 @@
 import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
+import 'package:cookhub_frontend/app/modules/login_signup/screens/signin_screen.dart';
+import 'package:cookhub_frontend/app/modules/login_signup/screens/signup_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
@@ -108,11 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         DefaultButton(
                           btnTitle: 'Continue with Google',
+                          width: double.infinity,
                           btnIcon: SvgPicture.asset(TImages.googleLogo),
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
-                          goToHomePage: () async {
+                          onClick: () async {
                             await signInWithGoogle();
                             if (mounted) {
                               Navigator.push(
@@ -126,27 +129,37 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         DefaultButton(
                           btnTitle: 'Continue with Facebook',
+                          width: double.infinity,
                           btnIcon: SvgPicture.asset(TImages.facebookLogo),
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
-                          goToHomePage: () {},
+                          onClick: () {},
                         ),
                         DefaultButton(
                           btnTitle: 'Continue with Email',
+                          width: double.infinity,
                           btnIcon: SvgPicture.asset(TIcons.mailIcon),
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
-                          goToHomePage: () {},
+                          onClick: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) => SignUpScreen(),
+                              ),
+                            );
+                          },
                         ),
                         DefaultButton(
                           btnTitle: 'Continue as guest',
+                          width: double.infinity,
                           btnIcon: Container(),
                           btnBackground: Colors.white,
                           btnBorder: Colors.transparent,
                           labelColor: ColorSelect.textColor,
-                          goToHomePage: _goToHomePage,
+                          onClick: _goToHomePage,
                         ),
                         const SizedBox(
                           height: TSizes.space_8,
@@ -165,7 +178,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: 2,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (ctx) => const SignInScreen(),
+                                  ),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.all(TSizes.space_8),
                                 child: Text(

@@ -4,6 +4,7 @@ import 'package:cookhub_frontend/app/modules/add_recipe/widgets/remove_button.da
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
+import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class MethodWidget extends StatefulWidget {
@@ -56,6 +57,9 @@ class _MethodWidgetState extends State<MethodWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   InputWidget(
+                    textStyle: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
+                      color: ColorSelect.textColor,
+                    ),
                     controller: _descriptionController,
                     width: buttonWidth,
                     height: null,
