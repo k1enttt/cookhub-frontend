@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/data/data.dart';
 import 'package:cookhub_frontend/app/data/models/comment.dart';
 import 'package:cookhub_frontend/app/data/models/ingredient.dart';
 import 'package:cookhub_frontend/app/data/models/recipe_step.dart';
@@ -39,24 +40,6 @@ class RecipesController extends GetxController {
     ),
   ];
 
-  // Thành phần
-  List<Ingredient> ingredients = [
-    Ingredient(name: 'Beef bones', quantity: '500', unit: 'pounds'),
-    Ingredient(name: 'Yellow onions', quantity: '2'),
-    Ingredient(name: 'Ginger', quantity: '100', unit: 'g'),
-    Ingredient(name: 'Beef chuck', quantity: '5', unit: 'pounds'),
-    Ingredient(name: 'Fish sauce', quantity: '1/2', unit: 'cup'),
-    Ingredient(name: 'Water', quantity: '5', unit: 'quart'),
-    Ingredient(name: 'Rock Sugar', quantity: '21/2', unit: 'ounces'),
-    Ingredient(name: 'Cinnamon stick', quantity: '1'),
-    Ingredient(name: 'Fennel seeds', quantity: '2', unit: 'teaspoon'),
-    Ingredient(name: 'Salt', quantity: '1', unit: 'teaspoon'),
-    Ingredient(name: 'Star anise', quantity: '8'),
-    Ingredient(name: 'Slided chilli'),
-    Ingredient(name: 'Spring onion'),
-    Ingredient(name: 'Cilantro'),
-  ];
-
   // Bình luận
   List<Comment> comments = [
     Comment(
@@ -64,37 +47,21 @@ class RecipesController extends GetxController {
       userName: 'Tien Da',
       userAvt: 'assets/user_avt.png',
       rate: 4,
-      body: 'This is a very good recipe. I will try it soon',
+      body:
+          'Made the authentic pho recipe and it was amazing! After roasting I put in the the pressure cooker for 60 min, and it was amazing! The closest I’ve ever tasted to what we had in Vietnam. Thanks for a great recipe',
     ),
     Comment(
       id: 2,
       userName: 'Tien Da',
       userAvt: 'assets/user_avt.png',
       rate: 2,
-      body: 'This is a very good recipe. I will try it soon',
-    ),
-    Comment(
-      id: 3,
-      userName: 'Tien Da',
-      userAvt: 'assets/user_avt.png',
-      rate: 3,
-      body: 'This is a very good recipe. I will try it soon',
-    ),
-    Comment(
-      id: 4,
-      userName: 'Tien Da',
-      userAvt: 'assets/user_avt.png',
-      rate: 5,
-      body: 'This is a very good recipe. I will try it soon',
-    ),
-    Comment(
-      id: 5,
-      userName: 'Tien Da',
-      userAvt: 'assets/user_avt.png',
-      rate: 1,
-      body: 'This is a very good recipe. I will try it soon',
+      body:
+          'Made the authentic pho recipe and it was amazing! After roasting I put in the the pressure cooker for 60 min, and it was amazing! The closest I’ve ever tasted to what we had in Vietnam. Thanks for a great recipe',
     ),
   ];
+
+  // Thành phần
+  RxList<Ingredient> ingredientsList = MyData.ingredients.obs;
 
   // Thẻ tag
   List<Tag> tags = [

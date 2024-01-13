@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1025336674419",
+    "project_id": "cookhub-3ba90",
+    "storage_bucket": "cookhub-3ba90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025336674419:android:32b7687b6a78e05c574206",
+        "android_client_info": {
+          "package_name": "com.example.cookhub_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL3dm5IwvyGoKqjUd5aYhky9t_LVPIA9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
