@@ -13,7 +13,7 @@ class ShowAllHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RxBool isBookmark = false.obs; // Trạng thái bật bookmark để lưu công thức
-    RxBool isFetchData200 = false.obs; // Trạng thái lấy dữ liệu thành công
+    RxBool isFetchData200 = true.obs; // Trạng thái lấy dữ liệu thành công
 
     return Scaffold(
       body: SafeArea(

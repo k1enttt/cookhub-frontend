@@ -34,8 +34,8 @@ class _FilterScreenState extends State<FilterScreen> {
         padding: const EdgeInsets.symmetric(
           horizontal: 18,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               width: double.infinity,
