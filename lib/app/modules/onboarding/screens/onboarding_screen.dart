@@ -21,8 +21,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
 
   void _nextToLoginPage() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (ctx) => const LoginScreen()));
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (ctx) => const LoginScreen()),
+      (route) {
+        return false;
+      },
+    );
   }
 
   @override
