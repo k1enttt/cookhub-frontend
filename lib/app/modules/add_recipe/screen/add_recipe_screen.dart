@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class AddRecipeScreen extends StatefulWidget {
@@ -131,11 +132,20 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
   }
 
   void _uploadRecipe() async {
+    final storage = new FlutterSecureStorage();
+    var token;
+    try {
+      token = await storage.read(key: 'token');
+      print(token);
+    } catch (e) {
+      print(e);
+    }
     try {
       final http.Response response = await http.post(
         Uri.parse('$SERVER_URL/api/v1/recipes/add-new-recipe'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer $token',
         },
         body: jsonEncode(
           <String, dynamic>{
@@ -143,15 +153,23 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 'https://firebasestorage.googleapis.com/v0/b/cookhub-ef9b4.appspot.com/o/step-5.png?alt=media&token=c241b5dc-ac00-494f-837a-4c2450a7383c',
             'title': _nameController.text,
             'desc': _descriptionController.text,
-            'cook_time': int.parse(_hourController.text) / 60 +
+            "rating": 4.2, // nullable; default: 0
+            'cook_time': int.parse(_hourController.text) * 60 +
                 int.parse(_minuteController.text),
+            "level":
+                "medium", // enum: easy,medium,hard,masterchef; default: medium
+            "review_count": 16, // nullable; default: 0
+            "regional": "Vietnamese",
+            "dish_type": "Main dish",
             'serves': _counterServe,
-            'ingredients': _ingredientList,
             'steps': _stepList,
+            'ingredients': _ingredientList,
           },
         ),
       );
-      if (response.statusCode == 201) {
+      print(response.statusCode);
+      if (response.statusCode == 201 || response.statusCode == 302) {
+        print(response.body);
         Navigator.push(
           context,
           MaterialPageRoute(

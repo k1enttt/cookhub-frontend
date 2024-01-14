@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/data/services/service.dart';
 import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/home/home_controller.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/navigation_menu.dart';
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _refresh();
+    SecureStorage().readSecureData('token');
     super.initState();
   }
 

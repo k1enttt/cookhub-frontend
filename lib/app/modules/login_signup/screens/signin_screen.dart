@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cookhub_frontend/app/data/services/service.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
 import 'package:cookhub_frontend/app/modules/beginning/screen/introduction_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/forgot_password_screen.dart';
@@ -12,6 +13,7 @@ import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
@@ -39,6 +41,16 @@ class _SignInScreenState extends State<SignInScreen> {
         }),
       );
       if (response.statusCode == 200) {
+        var token = jsonDecode(response.body)["data"]["token"];
+        print(token);
+
+        final storage = new FlutterSecureStorage();
+        try {
+          await storage.write(key: 'token', value: token);
+        } catch (e) {
+          print(e);
+        }
+
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -46,7 +58,6 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
         );
       }
-      print(response.body);
     } catch (e) {
       print(e);
     }
