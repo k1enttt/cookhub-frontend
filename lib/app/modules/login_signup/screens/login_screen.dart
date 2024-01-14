@@ -1,4 +1,3 @@
-import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signin_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signup_screen.dart';
@@ -10,7 +9,6 @@ import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {

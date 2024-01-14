@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:cookhub_frontend/core/constants/image_strings.dart';
 
 List<HomeModel> recipesFromMap(String str) => List<HomeModel>.from(
       json.decode(str)["data"].map(

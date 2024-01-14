@@ -1,5 +1,3 @@
-import 'package:cookhub_frontend/app/data/models/home_recipe.dart';
-import 'package:cookhub_frontend/app/data/provider/data_center.dart';
 import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/slide_item.dart';

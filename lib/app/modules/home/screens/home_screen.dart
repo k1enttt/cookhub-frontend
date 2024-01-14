@@ -1,5 +1,4 @@
 import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
-import 'package:cookhub_frontend/app/modules/home/home_controller.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/navigation_menu.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';

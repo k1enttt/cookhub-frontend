@@ -2,7 +2,6 @@ import 'package:cookhub_frontend/app/global_widgets/skeleton.dart';
 import 'package:cookhub_frontend/app/data/models/home_recipe.dart';
 import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
-import 'package:cookhub_frontend/app/modules/recipes/screens/skeleton_recipes_screen.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
