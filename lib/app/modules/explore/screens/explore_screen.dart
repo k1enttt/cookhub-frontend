@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/modules/explore/data/food_tag_data.dart';
+import 'package:cookhub_frontend/app/modules/explore/screens/result_explore_screen.dart';
 import 'package:cookhub_frontend/app/modules/explore/widgets/popular_tag.dart';
 import 'package:cookhub_frontend/app/modules/explore/widgets/search_item.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:cookhub_frontend/app/modules/explore/widgets/search_bar.dart';
+import 'package:get/get.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -56,7 +58,12 @@ class ExploreScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        for (int i = 0; i < 3; i++) const QuickSearchWidget()
+                        for (int i = 0; i < 3; i++)
+                          GestureDetector(
+                              onTap: () {
+                                Get.to(() => ResultExploreScreen());
+                              },
+                              child: const QuickSearchWidget())
                       ],
                     ),
                   ),
@@ -75,8 +82,13 @@ class ExploreScreen extends StatelessWidget {
               children: [
                 ...foodTagData.map(
                   (tagItem) => tagItem.type == 'popular'
-                      ? PopularTag(
-                          title: tagItem.title,
+                      ? GestureDetector(
+                          onTap: () {
+                            Get.to(() => ResultExploreScreen());
+                          },
+                          child: PopularTag(
+                            title: tagItem.title,
+                          ),
                         )
                       : const SizedBox(),
                 ),
