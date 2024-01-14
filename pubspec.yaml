@@ -45,6 +45,7 @@ dependencies:
   http: ^1.1.0
   flutter_launcher_icons: ^0.13.1
   is_first_run: ^1.0.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -120,6 +121,7 @@ flutter:
     - assets/icons/carrot_grey.svg
     - assets/icons/carrot_fill.svg
     - assets/icons/close_fill.svg
+    - assets/images/avatar_default.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

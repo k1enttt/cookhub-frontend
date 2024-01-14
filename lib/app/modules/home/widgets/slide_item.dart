@@ -1,7 +1,7 @@
 import 'package:cookhub_frontend/app/global_widgets/skeleton.dart';
+import 'package:cookhub_frontend/app/data/models/home_recipe.dart';
+import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
-import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
-import 'package:cookhub_frontend/app/modules/recipes/screens/skeleton_recipes_screen.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
@@ -10,30 +10,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class SliderItem extends StatefulWidget {
-  const SliderItem({
+// ignore: must_be_immutable
+class SliderItem extends StatelessWidget {
+  HomeModel itemData;
+  SliderItem(
+    this.itemData, {
     super.key,
-    required this.itemData,
   });
+  final RecipeHomeController _controller = Get.find<RecipeHomeController>();
 
-  final HomeModel itemData;
-
-  @override
-  State<SliderItem> createState() => _SliderItemState();
-}
-
-class _SliderItemState extends State<SliderItem> {
-  late HomeModel itemData = widget.itemData;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(const RecipesScreen(), arguments: {
-        //   'isRecipeDetail': null,
-        //   'isDone': null,
-        //   'haveIngredients': null,
-        // });
-        Get.to(() => const SkeletonRecipesScreen());
+        Get.to(const RecipesScreen(), arguments: {
+          'isRecipeDetail': null,
+          'isDone': null,
+          'haveIngredients': null,
+        });
+        // Get.to(() => const SkeletonRecipesScreen());
       },
       child: Container(
         padding: const EdgeInsets.symmetric(
@@ -48,9 +43,9 @@ class _SliderItemState extends State<SliderItem> {
           children: [
             Stack(
               children: [
-                (widget.itemData.imageUrl != "")
+                (itemData.imageUrl != "")
                     ? Image.network(
-                        widget.itemData.imageUrl,
+                        itemData.imageUrl,
                         width: 168,
                         height: 168,
                       )
@@ -71,7 +66,7 @@ class _SliderItemState extends State<SliderItem> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      '${widget.itemData.time} min.',
+                      '${itemData.time} min.',
                       style: TextStyle(
                         color: ColorSelect.textColor,
                         fontSize: TSizes.bodyNormal,
@@ -99,7 +94,7 @@ class _SliderItemState extends State<SliderItem> {
                           height: 12,
                         ),
                         Text(
-                          '${widget.itemData.rate}',
+                          '${itemData.rate}',
                           style: TextStyle(
                             color: ColorSelect.textColor,
                             fontSize: TSizes.bodyNormal,
@@ -116,7 +111,8 @@ class _SliderItemState extends State<SliderItem> {
                 vertical: 8,
               ),
               child: Text(
-                '${widget.itemData.title}',
+                '${itemData.title}',
+                softWrap: true,
                 style: TTextTheme.lightTextTheme.headlineMedium!.copyWith(
                   color: Colors.black,
                 ),
@@ -128,13 +124,12 @@ class _SliderItemState extends State<SliderItem> {
                   margin: const EdgeInsets.only(
                     right: 4,
                   ),
-                  child: (widget.itemData.avatarUrl != "")
+                  child: (itemData.avatarUrl != "")
                       ? SizedBox(
                           height: 24,
                           width: 24,
                           child: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(widget.itemData.avatarUrl),
+                            backgroundImage: NetworkImage(itemData.avatarUrl),
                           ),
                         )
                       : const CircleSkeleton(
@@ -142,7 +137,7 @@ class _SliderItemState extends State<SliderItem> {
                         ),
                 ),
                 Text(
-                  '${widget.itemData.name}',
+                  '${itemData.name}',
                   style: TTextTheme.lightTextTheme.bodySmall!.copyWith(
                     color: ColorSelect.primaryColor,
                   ),

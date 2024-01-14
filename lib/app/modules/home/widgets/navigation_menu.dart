@@ -1,12 +1,20 @@
+import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/home/home_controller.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class NavigationMenu extends StatelessWidget {
-  NavigationMenu({super.key});
+class NavigationMenu extends StatefulWidget {
+  const NavigationMenu(this.recipeHomeController, {super.key});
 
+  final RecipeHomeController recipeHomeController;
+
+  @override
+  State<NavigationMenu> createState() => _NavigationMenuState();
+}
+
+class _NavigationMenuState extends State<NavigationMenu> {
   final controller = Get.put(HomeController());
 
   @override

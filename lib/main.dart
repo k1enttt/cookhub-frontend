@@ -1,4 +1,3 @@
-import 'package:cookhub_frontend/app/modules/login_signup/screens/login_screen.dart';
 import 'package:cookhub_frontend/app/modules/onboarding/screens/onboarding_screen.dart';
 import 'package:cookhub_frontend/core/theme/theme.dart';
 import 'package:cookhub_frontend/core/utils/firebase_options.dart';

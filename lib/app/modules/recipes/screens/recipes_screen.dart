@@ -14,7 +14,6 @@ import 'package:cookhub_frontend/app/modules/recipes/widgets/shopping_day_popup.
 import 'package:cookhub_frontend/app/modules/recipes/widgets/text_step.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/values/colors.dart';
-import 'package:cookhub_frontend/core/values/strings.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

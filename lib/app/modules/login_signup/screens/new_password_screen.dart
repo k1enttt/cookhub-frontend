@@ -1,9 +1,7 @@
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
-import 'package:cookhub_frontend/app/modules/login_signup/screens/otp_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signin_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
-import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';

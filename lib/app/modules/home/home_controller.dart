@@ -9,12 +9,9 @@ class HomeController extends GetxController {
   // Implement HomeController
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    const HomePage(),
+    HomePage(),
     const ExploreScreen(),
     const AddRecipeScreen(),
-    // Container(
-    //   color: ColorSelect.textColor,
-    // ),
     const GroceryScreen(),
     const ProfileScreen(),
   ];

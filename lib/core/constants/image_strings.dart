@@ -1,4 +1,5 @@
 class TImages {
+  static const String avatarDefault = 'assets/images/avatar_default.png';
   // App logos
   static const String lightAppLogo = 'assets/logos/logo-light.svg';
   static const String darkAppLogo = 'assets/logos/logo-light.svg';
