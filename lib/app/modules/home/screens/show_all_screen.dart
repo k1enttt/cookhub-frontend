@@ -1,4 +1,6 @@
 import 'package:cookhub_frontend/app/global_widgets/card_skeleton_result.dart';
+import 'package:cookhub_frontend/app/global_widgets/skeleton.dart';
+import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/values/text_style.dart';
@@ -12,6 +14,7 @@ class ShowAllHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final RecipeHomeController _controller = Get.find<RecipeHomeController>();
     RxBool isBookmark = false.obs; // Trạng thái bật bookmark để lưu công thức
     RxBool isFetchData200 = true.obs; // Trạng thái lấy dữ liệu thành công
 
@@ -47,7 +50,7 @@ class ShowAllHomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              (isFetchData200.value)
+              (!_controller.isLoading.value)
                   ? Expanded(
                       child: ListView.separated(
                         separatorBuilder: (context, index) {
@@ -80,11 +83,16 @@ class ShowAllHomeScreen extends StatelessWidget {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Image.asset(
-                                    "assets/images/home/food_1.png",
-                                    width: 80,
-                                    height: 80,
-                                  ),
+                                  (_controller.postList[index].imageUrl != "")
+                                      ? Image.network(
+                                          _controller.postList[index].imageUrl,
+                                          width: 80,
+                                          height: 80,
+                                        )
+                                      : Skeleton(
+                                          width: 80,
+                                          height: 80,
+                                        ),
                                   const SizedBox(
                                     width: 16,
                                   ),
@@ -94,21 +102,21 @@ class ShowAllHomeScreen extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         // DISH NAME
-                                        const Text(
-                                          "Homemade pizza",
+                                        Text(
+                                          _controller.postList[index].title,
                                           style:
                                               CustomTextStyles.largeBoldStyle,
                                         ),
                                         // TAG
                                         Text(
-                                          "| Tag here",
+                                          "| Vietnamese",
                                           style: CustomTextStyles.smallStyle
                                               .copyWith(
                                                   color: ColorSelect
                                                       .secondaryColor),
                                         ),
                                         // RATING
-                                        const SizedBox(
+                                        SizedBox(
                                           child: Row(
                                             children: [
                                               Icon(
@@ -119,7 +127,8 @@ class ShowAllHomeScreen extends StatelessWidget {
                                                 width: 2,
                                               ),
                                               Text(
-                                                "4.6",
+                                                _controller
+                                                    .postList[index].rate,
                                                 style:
                                                     CustomTextStyles.smallStyle,
                                               ),
@@ -130,16 +139,23 @@ class ShowAllHomeScreen extends StatelessWidget {
                                         SizedBox(
                                           child: Row(
                                             children: [
-                                              const Icon(
-                                                Icons.circle,
-                                                color: Colors.grey,
-                                                size: 16,
-                                              ),
+                                              (_controller.postList[index]
+                                                          .avatarUrl !=
+                                                      "")
+                                                  ? Image.network(_controller
+                                                      .postList[index]
+                                                      .avatarUrl)
+                                                  : const Icon(
+                                                      Icons.circle,
+                                                      color: Colors.grey,
+                                                      size: 16,
+                                                    ),
                                               const SizedBox(
                                                 width: 4,
                                               ),
                                               Text(
-                                                "Nguyen Huu Hieu",
+                                                _controller
+                                                    .postList[index].name,
                                                 style: CustomTextStyles
                                                     .smallStyle
                                                     .copyWith(
@@ -178,7 +194,7 @@ class ShowAllHomeScreen extends StatelessWidget {
                             ),
                           );
                         },
-                        itemCount: 10,
+                        itemCount: _controller.postList.length,
                       ),
                     )
                   : Expanded(

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cookhub_frontend/app/modules/beginning/screen/introduction_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:cookhub_frontend/app/modules/onboarding/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _SharedPrefState extends State<SharedPref> {
       () async {
         await IsFirstRun.isFirstRun() == true
             ? Get.offAll(() => OnboardingScreen())
-            : Get.offAll(() => HomeScreen());
+            : Get.offAll(() => IntroductionScreen());
       },
     );
   }
