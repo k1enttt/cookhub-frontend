@@ -1,13 +1,18 @@
+import 'dart:convert';
+
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signin_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
+import 'package:cookhub_frontend/core/constants/constants.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -21,6 +26,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _passConfirmController = TextEditingController();
+
+  void _register() {
+    if (_usernameController.text != '' &&
+        _emailController.text != '' &&
+        _passwordController.text != '' &&
+        _passConfirmController.text != '') {
+      try {
+        sendData(
+          _usernameController.text,
+          _emailController.text,
+          _passwordController.text,
+          _passConfirmController.text,
+        );
+      } catch (e) {}
+    }
+    return;
+  }
+
+  sendData(String name, String email, String password,
+      String password_confirmation) async {
+    var response = await http.post(
+      Uri.parse('$SERVER_URL/api/v1/authen/register'),
+      body: jsonEncode(<String, String>{
+        'name': name,
+        'email': email,
+        'password': password,
+        'password_confirmation': password_confirmation,
+      }),
+    );
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      print(response.statusCode);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +193,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             width: double.infinity,
                             height: 48,
                             label: Strings.enterPassword,
-                            inputType: TextInputType.text,
+                            inputType: TextInputType.visiblePassword,
                             maxLine: 1,
                           ),
                           const SizedBox(
@@ -179,7 +219,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             width: double.infinity,
                             height: 48,
                             label: Strings.enterPassConfirm,
-                            inputType: TextInputType.text,
+                            inputType: TextInputType.visiblePassword,
                             maxLine: 1,
                           ),
                           const SizedBox(
@@ -192,7 +232,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             btnBackground: ColorSelect.primaryColor,
                             btnBorder: Colors.transparent,
                             labelColor: Colors.white,
-                            onClick: () {},
+                            onClick: _register,
                           ),
                           SizedBox(
                             height: _width * 0.1,

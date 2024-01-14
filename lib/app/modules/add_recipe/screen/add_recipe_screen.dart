@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cookhub_frontend/app/data/models/ingredient.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_image_widget.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_button.dart';
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/add_ingredient_widget.dart';
@@ -20,6 +23,18 @@ class AddRecipeScreen extends StatefulWidget {
 class _AddRecipeScreenState extends State<AddRecipeScreen> {
   int _counterDescription = 0;
   int _counterServe = 0;
+  List<Ingredient> _ingredientsList = [];
+
+  File? _selectedImage;
+  Ingredient? _ingredient;
+
+  set file(File value) => setState(() {
+        _selectedImage = value;
+      });
+
+  set ingredient(Ingredient value) => setState(() {
+        _ingredient = value;
+      });
 
   final _nameController = TextEditingController();
   final _descriptionController = TextEditingController();
@@ -48,6 +63,16 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
     });
   }
 
+  void _uploadRecipe() {
+    print(_selectedImage.toString());
+    print(_nameController.text);
+    print(_descriptionController.text);
+    print(_counterServe);
+    print(_hourController.text);
+    print(_minuteController.text);
+    print(_ingredientsList.length);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -71,7 +96,11 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
             const SizedBox(
               height: TSizes.space_24,
             ),
-            const AddImageWidget(),
+            AddImageWidget(
+              callback: (val) => setState(() {
+                _selectedImage = val;
+              }),
+            ),
             const SizedBox(
               height: TSizes.space_24,
             ),
@@ -243,7 +272,14 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            for (int i = 0; i < 3; i++) const AddIngredientWidget(),
+            for (int i = 0; i < 3; i++)
+              AddIngredientWidget(
+                id: i,
+                callback: (val) => setState(() {
+                  _ingredient = val;
+                  // _ingredientsList.add(_ingredient!);
+                }),
+              ),
             Align(
               alignment: Alignment.center,
               child: AddButton(
@@ -254,6 +290,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 buttonColor: ColorSelect.secondaryColor,
                 contentColor: Colors.white,
                 borderRadius: 32,
+                onTap: () {},
               ),
             ),
             Text(
@@ -280,6 +317,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 buttonColor: ColorSelect.secondaryColor,
                 contentColor: Colors.white,
                 borderRadius: 32,
+                onTap: () {},
               ),
             ),
             const SizedBox(
@@ -292,6 +330,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               buttonTitle: Strings.recipeButtonCreate,
               buttonColor: ColorSelect.primaryColor,
               contentColor: Colors.white,
+              onTap: _uploadRecipe,
             ),
           ],
         ),

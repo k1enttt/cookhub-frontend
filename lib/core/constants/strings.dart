@@ -109,6 +109,7 @@ class Strings {
   static const String recipeIngredientHeadline = "Ingredients";
   static const String recipeLableName = "Your recipe's name";
   static const String recipeLableAmount = 'Amount';
+  static const String recipeLableUnit = 'Unit';
   static const String recipeButtonIngredient = 'Ingredient';
   static const String recipeMethodHeadline = "Method";
   static const String recipeDescription = "Write your description here";

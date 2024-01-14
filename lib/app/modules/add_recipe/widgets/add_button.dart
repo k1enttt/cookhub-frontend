@@ -11,6 +11,7 @@ class AddButton extends StatelessWidget {
     this.borderRadius = 0,
     required this.buttonColor,
     required this.contentColor,
+    required this.onTap,
   });
 
   final String buttonTitle;
@@ -20,13 +21,14 @@ class AddButton extends StatelessWidget {
   final double borderRadius;
   final Color buttonColor;
   final Color contentColor;
+  final Function() onTap;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
       child: Material(
         child: InkWell(
-          onTap: () {},
+          onTap: onTap,
           child: Ink(
             color: buttonColor,
             width: width,
