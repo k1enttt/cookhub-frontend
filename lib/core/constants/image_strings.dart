@@ -68,6 +68,7 @@ class TImages {
 
   // Add recipe images
   static const String hat = 'assets/images/add_recipe/hat.svg';
+  static const String recipeImage = 'assets/images/step-5.png';
 }
 
 class TIcons {

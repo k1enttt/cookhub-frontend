@@ -30,6 +30,9 @@ class SliderItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           horizontal: TSizes.space_8,
         ),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 6,
+        ),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -46,12 +49,12 @@ class SliderItem extends StatelessWidget {
                         height: 168,
                       )
                     // : Image.network(
-                    //     widget.itemData.imageUrl,
+                    //     itemData.imageUrl,
                     //     width: 168,
                     //     height: 168,
                     //   ),
                     : Image.asset(
-                        TImages.avatarDefault,
+                        TImages.recipeImage,
                         width: 168,
                         height: 168,
                       ),

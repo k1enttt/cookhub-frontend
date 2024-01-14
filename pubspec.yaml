@@ -45,6 +45,8 @@ dependencies:
   http: ^1.1.0
   shimmer: ^3.0.0
   image_picker: ^1.0.0
+  cached_network_image: ^3.3.1
+  firebase_storage: ^11.6.0
 
 dev_dependencies:
   flutter_test:
@@ -114,6 +116,7 @@ flutter:
     - assets/icons/carrot_fill.svg
     - assets/icons/close_fill.svg
     - assets/images/avatar_default.png
+    - assets/images/step-5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

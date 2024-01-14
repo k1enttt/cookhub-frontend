@@ -11,12 +11,12 @@ import 'package:flutter/material.dart';
 typedef void IngredientCallback(Ingredient ingredient);
 
 class AddIngredientWidget extends StatefulWidget {
-  final IngredientCallback callback;
+  // final IngredientCallback callback;
   final int id;
 
   const AddIngredientWidget({
     super.key,
-    required this.callback,
+    // required this.callback,
     required this.id,
   });
 
@@ -32,14 +32,14 @@ class _AddIngredientWidgetState extends State<AddIngredientWidget> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      widget.callback(Ingredient(
-          id: widget.id,
-          name: _nameIngredientController.text,
-          quantity: _amountIngredientController.text,
-          unit: _unitIngredientController.text,
-          isDone: true));
-    });
+    // setState(() {
+    //   widget.callback(Ingredient(
+    //       id: widget.id,
+    //       name: _nameIngredientController.text,
+    //       quantity: _amountIngredientController.text,
+    //       unit: _unitIngredientController.text,
+    //       isDone: true));
+    // });
   }
 
   @override
