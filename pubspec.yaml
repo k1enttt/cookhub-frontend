@@ -43,6 +43,7 @@ dependencies:
   google_sign_in: ^6.1.6
   dotted_border: ^2.1.0
   http: ^1.1.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -111,6 +112,7 @@ flutter:
     - assets/icons/carrot_grey.svg
     - assets/icons/carrot_fill.svg
     - assets/icons/close_fill.svg
+    - assets/images/avatar_default.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

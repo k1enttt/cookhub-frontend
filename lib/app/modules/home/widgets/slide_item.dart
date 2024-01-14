@@ -1,5 +1,5 @@
+import 'package:cookhub_frontend/app/data/models/home_recipe.dart';
 import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
-import 'package:cookhub_frontend/app/modules/home/models/home_model.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
@@ -8,20 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class SliderItem extends StatefulWidget {
-  const SliderItem({
+// ignore: must_be_immutable
+class SliderItem extends StatelessWidget {
+  HomeModel itemData;
+  SliderItem(
+    this.itemData, {
     super.key,
-    required this.itemData,
   });
 
-  final HomeModel itemData;
-
-  @override
-  State<SliderItem> createState() => _SliderItemState();
-}
-
-class _SliderItemState extends State<SliderItem> {
-  late HomeModel itemData = widget.itemData;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -45,11 +39,22 @@ class _SliderItemState extends State<SliderItem> {
           children: [
             Stack(
               children: [
-                Image.network(
-                  widget.itemData.imageUrl,
-                  width: 168,
-                  height: 168,
-                ),
+                itemData.imageUrl == ''
+                    ? Image.asset(
+                        TImages.avatarDefault,
+                        width: 168,
+                        height: 168,
+                      )
+                    // : Image.network(
+                    //     widget.itemData.imageUrl,
+                    //     width: 168,
+                    //     height: 168,
+                    //   ),
+                    : Image.asset(
+                        TImages.avatarDefault,
+                        width: 168,
+                        height: 168,
+                      ),
                 Positioned(
                   top: 16,
                   left: 16,
@@ -63,7 +68,7 @@ class _SliderItemState extends State<SliderItem> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      '${widget.itemData.time} min.',
+                      '${itemData.time} min.',
                       style: TextStyle(
                         color: ColorSelect.textColor,
                         fontSize: TSizes.bodyNormal,
@@ -91,7 +96,7 @@ class _SliderItemState extends State<SliderItem> {
                           height: 12,
                         ),
                         Text(
-                          '${widget.itemData.rate}',
+                          '${itemData.rate}',
                           style: TextStyle(
                             color: ColorSelect.textColor,
                             fontSize: TSizes.bodyNormal,
@@ -108,7 +113,8 @@ class _SliderItemState extends State<SliderItem> {
                 vertical: 8,
               ),
               child: Text(
-                '${widget.itemData.title}',
+                '${itemData.title}',
+                softWrap: true,
                 style: TTextTheme.lightTextTheme.headlineMedium!.copyWith(
                   color: Colors.black,
                 ),
@@ -124,12 +130,15 @@ class _SliderItemState extends State<SliderItem> {
                     height: 24,
                     width: 24,
                     child: CircleAvatar(
-                      backgroundImage: NetworkImage(widget.itemData.avatarUrl),
+                      backgroundImage: AssetImage(
+                        TImages.avatarDefault,
+                      ),
+                      backgroundColor: ColorSelect.gray_100,
                     ),
                   ),
                 ),
                 Text(
-                  '${widget.itemData.name}',
+                  '${itemData.name}',
                   style: TTextTheme.lightTextTheme.bodySmall!.copyWith(
                     color: ColorSelect.primaryColor,
                   ),

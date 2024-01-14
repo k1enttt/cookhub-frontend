@@ -1,3 +1,4 @@
+import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/home_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signin_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signup_screen.dart';
@@ -9,6 +10,7 @@ import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -34,9 +36,18 @@ class _LoginScreenState extends State<LoginScreen> {
         await auth.signInWithCredential(credential);
   }
 
-  @override
-  Widget build(BuildContext context) {
-    void _goToHomePage() {
+  void _loginWithEmail() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => SignUpScreen(),
+      ),
+    );
+  }
+
+  void _loginWithGoogle() async {
+    await signInWithGoogle();
+    if (mounted) {
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -44,7 +55,19 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     }
+  }
 
+  void _loginAsGuest() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => HomeScreen(),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
@@ -115,27 +138,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
-                          onClick: () async {
-                            await signInWithGoogle();
-                            if (mounted) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (ctx) => HomeScreen(),
-                                ),
-                              );
-                            }
-                          },
+                          onClick: _loginWithGoogle,
                         ),
-                        DefaultButton(
-                          btnTitle: 'Continue with Facebook',
-                          width: double.infinity,
-                          btnIcon: SvgPicture.asset(TImages.facebookLogo),
-                          btnBackground: Colors.transparent,
-                          btnBorder: Colors.white,
-                          labelColor: Colors.white,
-                          onClick: () {},
-                        ),
+                        // DefaultButton(
+                        //   btnTitle: 'Continue with Facebook',
+                        //   width: double.infinity,
+                        //   btnIcon: SvgPicture.asset(TImages.facebookLogo),
+                        //   btnBackground: Colors.transparent,
+                        //   btnBorder: Colors.white,
+                        //   labelColor: Colors.white,
+                        //   onClick: () {},
+                        // ),
                         DefaultButton(
                           btnTitle: 'Continue with Email',
                           width: double.infinity,
@@ -143,14 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           btnBackground: Colors.transparent,
                           btnBorder: Colors.white,
                           labelColor: Colors.white,
-                          onClick: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (ctx) => SignUpScreen(),
-                              ),
-                            );
-                          },
+                          onClick: _loginWithEmail,
                         ),
                         DefaultButton(
                           btnTitle: 'Continue as guest',
@@ -159,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           btnBackground: Colors.white,
                           btnBorder: Colors.transparent,
                           labelColor: ColorSelect.textColor,
-                          onClick: _goToHomePage,
+                          onClick: _loginAsGuest,
                         ),
                         const SizedBox(
                           height: TSizes.space_8,
