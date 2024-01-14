@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     void _goToHomePage() {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (ctx) => HomeScreen(),
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onClick: () async {
                             await signInWithGoogle();
                             if (mounted) {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (ctx) => HomeScreen(),

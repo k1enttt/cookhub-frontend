@@ -23,11 +23,11 @@ class RecipeCard extends StatelessWidget {
       color: gray1,
     );
     const TextStyle recipesName = TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-      fontFamily: 'Inter',
-      height: 1.3,
-    );
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Inter',
+        height: 1.3,
+        color: Colors.black);
 
     // Data
     RxInt haveIngredients = RxInt(recipe.haveIngredients);

@@ -43,10 +43,19 @@ dependencies:
   google_sign_in: ^6.1.6
   dotted_border: ^2.1.0
   http: ^1.1.0
+  flutter_launcher_icons: ^0.13.1
+  is_first_run: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  image_path: "assets/logos/logo.png"
+  android: true
+  ios: false
+  
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
