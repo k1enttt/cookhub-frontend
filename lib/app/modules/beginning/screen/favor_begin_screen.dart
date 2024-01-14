@@ -136,7 +136,7 @@ class _FavorBeginScreenState extends State<FavorBeginScreen> {
                       btnBorder: Colors.transparent,
                       labelColor: Colors.white,
                       onClick: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (ctx) => HomeScreen(),

@@ -1,4 +1,5 @@
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
+import 'package:cookhub_frontend/app/modules/beginning/screen/introduction_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signin_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
@@ -8,6 +9,7 @@ import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -192,7 +194,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             btnBackground: ColorSelect.primaryColor,
                             btnBorder: Colors.transparent,
                             labelColor: Colors.white,
-                            onClick: () {},
+                            onClick: () {
+                              Get.to(() => IntroductionScreen());
+                            },
                           ),
                           SizedBox(
                             height: _width * 0.1,
