@@ -1,5 +1,7 @@
+import 'package:cookhub_frontend/app/global_widgets/skeleton.dart';
 import 'package:cookhub_frontend/app/data/models/home_recipe.dart';
 import 'package:cookhub_frontend/app/modules/recipes/screens/recipes_screen.dart';
+import 'package:cookhub_frontend/app/modules/recipes/screens/skeleton_recipes_screen.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
@@ -20,11 +22,12 @@ class SliderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(const RecipesScreen(), arguments: {
-          'isRecipeDetail': null,
-          'isDone': null,
-          'haveIngredients': null,
-        });
+        // Get.to(const RecipesScreen(), arguments: {
+        //   'isRecipeDetail': null,
+        //   'isDone': null,
+        //   'haveIngredients': null,
+        // });
+        Get.to(() => const SkeletonRecipesScreen());
       },
       child: Container(
         padding: const EdgeInsets.symmetric(
@@ -39,19 +42,13 @@ class SliderItem extends StatelessWidget {
           children: [
             Stack(
               children: [
-                itemData.imageUrl == ''
-                    ? Image.asset(
-                        TImages.avatarDefault,
+                (itemData.imageUrl != "")
+                    ? Image.network(
+                        itemData.imageUrl,
                         width: 168,
                         height: 168,
                       )
-                    // : Image.network(
-                    //     widget.itemData.imageUrl,
-                    //     width: 168,
-                    //     height: 168,
-                    //   ),
-                    : Image.asset(
-                        TImages.avatarDefault,
+                    : Skeleton(
                         width: 168,
                         height: 168,
                       ),
@@ -126,16 +123,17 @@ class SliderItem extends StatelessWidget {
                   margin: const EdgeInsets.only(
                     right: 4,
                   ),
-                  child: SizedBox(
-                    height: 24,
-                    width: 24,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage(
-                        TImages.avatarDefault,
-                      ),
-                      backgroundColor: ColorSelect.gray_100,
-                    ),
-                  ),
+                  child: (itemData.avatarUrl != "")
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(itemData.avatarUrl),
+                          ),
+                        )
+                      : const CircleSkeleton(
+                          size: 24,
+                        ),
                 ),
                 Text(
                   '${itemData.name}',

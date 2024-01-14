@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _loginWithGoogle() async {
     await signInWithGoogle();
     if (mounted) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (ctx) => HomeScreen(),
@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _loginAsGuest() {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (ctx) => HomeScreen(),

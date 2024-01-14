@@ -35,4 +35,7 @@ class TSizes {
   static const double smallBtnW = 168;
   static const double smallBtnH = 48;
   static const double smallIcon = 20;
+
+  // Skeleton
+  static const double defaultPadding = 16.0;
 }
