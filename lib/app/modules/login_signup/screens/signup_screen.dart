@@ -27,39 +27,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordController = TextEditingController();
   final _passConfirmController = TextEditingController();
 
-  void _register() {
+  void _register() async {
     if (_usernameController.text != '' &&
         _emailController.text != '' &&
         _passwordController.text != '' &&
         _passConfirmController.text != '') {
       try {
-        sendData(
-          _usernameController.text,
-          _emailController.text,
-          _passwordController.text,
-          _passConfirmController.text,
+        final http.Response response = await http.post(
+          Uri.parse('$SERVER_URL/api/v1/authen/register'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'name': _usernameController.text,
+            'email': _emailController.text,
+            'password': _passwordController.text,
+            'password_confirmation': _passConfirmController.text,
+          }),
         );
-      } catch (e) {}
+        if (response.statusCode == 201) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (ctx) => const SignInScreen(),
+            ),
+          );
+        }
+      } catch (e) {
+        print(e);
+      }
     }
     return;
-  }
-
-  sendData(String name, String email, String password,
-      String password_confirmation) async {
-    var response = await http.post(
-      Uri.parse('$SERVER_URL/api/v1/authen/register'),
-      body: jsonEncode(<String, String>{
-        'name': name,
-        'email': email,
-        'password': password,
-        'password_confirmation': password_confirmation,
-      }),
-    );
-    if (response.statusCode == 200) {
-      print(response.body);
-    } else {
-      print(response.statusCode);
-    }
   }
 
   @override

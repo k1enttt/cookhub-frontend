@@ -1,15 +1,19 @@
+import 'dart:convert';
+
 import 'package:cookhub_frontend/app/modules/add_recipe/widgets/input_widget.dart';
 import 'package:cookhub_frontend/app/modules/beginning/screen/introduction_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/forgot_password_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/screens/signup_screen.dart';
 import 'package:cookhub_frontend/app/modules/login_signup/widgets/default_button.dart';
 import 'package:cookhub_frontend/core/constants/colors.dart';
+import 'package:cookhub_frontend/core/constants/constants.dart';
 import 'package:cookhub_frontend/core/constants/image_strings.dart';
 import 'package:cookhub_frontend/core/constants/sizes.dart';
 import 'package:cookhub_frontend/core/constants/strings.dart';
 import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:http/http.dart' as http;
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -19,8 +23,34 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  void _login() async {
+    try {
+      final http.Response response = await http.post(
+        Uri.parse('$SERVER_URL/api/v1/authen/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'email': _emailController.text,
+          'password': _passwordController.text,
+        }),
+      );
+      if (response.statusCode == 200) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (ctx) => const IntroductionScreen(),
+          ),
+        );
+      }
+      print(response.body);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +111,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           height: _width * 0.05,
                         ),
                         Text(
-                          Strings.usernameTitle,
+                          Strings.signUpEmail,
                           style: TTextTheme.lightTextTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
@@ -95,10 +125,10 @@ class _SignInScreenState extends State<SignInScreen> {
                               TTextTheme.lightTextTheme.bodyMedium!.copyWith(
                             color: ColorSelect.textColor,
                           ),
-                          controller: _usernameController,
+                          controller: _emailController,
                           width: double.infinity,
                           height: 48,
-                          label: Strings.enterUsername,
+                          label: Strings.enterEmail,
                           inputType: TextInputType.text,
                           maxLine: 1,
                         ),
@@ -166,14 +196,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           btnBackground: ColorSelect.primaryColor,
                           btnBorder: Colors.transparent,
                           labelColor: Colors.white,
-                          onClick: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (ctx) => const IntroductionScreen(),
-                              ),
-                            );
-                          },
+                          onClick: _login,
                         ),
                         SizedBox(
                           height: _width * 0.1,
