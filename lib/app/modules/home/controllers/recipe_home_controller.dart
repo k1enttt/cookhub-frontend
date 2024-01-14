@@ -1,21 +1,18 @@
 import 'package:cookhub_frontend/app/data/models/home_recipe.dart';
 import 'package:cookhub_frontend/app/data/services/api.dart';
-import 'package:cookhub_frontend/core/constants/constants.dart';
 import 'package:get/get.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class RecipeHomeController extends GetxController {
-  var isLoading = true.obs;
+  RxBool isLoading = true.obs;
   final postList = <HomeModel>[].obs;
 
   @override
   void onInit() {
-    fetchData();
+    fetchAllData();
     super.onInit();
   }
 
-  Future fetchData() async {
+  Future fetchAllData() async {
     try {
       isLoading(true);
       var homeRecipes =
@@ -23,7 +20,7 @@ class RecipeHomeController extends GetxController {
 
       if (homeRecipes != null) {
         postList.value = homeRecipes as List<HomeModel>;
-        print('Controller: ' + postList.value.length.toString());
+        print('Controller: ' + postList.length.toString());
       }
     } catch (e) {
       print('Error: $e');
@@ -31,4 +28,5 @@ class RecipeHomeController extends GetxController {
       isLoading(false);
     }
   }
+
 }

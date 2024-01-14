@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future _refresh() async {
     setState(() {});
-    await _homeRecipecontroller.fetchData();
+    await _homeRecipecontroller.fetchAllData();
     setState(() {});
     print(_homeRecipecontroller.postList.length);
     return Future.delayed(

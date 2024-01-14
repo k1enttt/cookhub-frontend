@@ -1,5 +1,4 @@
 import 'package:cookhub_frontend/app/global_widgets/card_skeleton_home.dart';
-import 'package:cookhub_frontend/app/data/models/home_recipe.dart';
 import 'package:cookhub_frontend/app/modules/home/controllers/recipe_home_controller.dart';
 import 'package:cookhub_frontend/app/modules/home/screens/show_all_screen.dart';
 import 'package:cookhub_frontend/app/modules/home/widgets/slider_widget.dart';
@@ -9,8 +8,6 @@ import 'package:cookhub_frontend/core/theme/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   Future _refresh() async {
     setState(() {});
-    await _controller.fetchData();
+    await _controller.fetchAllData();
     setState(() {});
     return Future.delayed(
       const Duration(seconds: 2),
@@ -39,7 +36,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    RxBool isFetchData200 = false.obs;
     Widget twoSkeletonRow = const SizedBox(
       child: Row(
         children: [
@@ -96,7 +92,9 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            (isFetchData200.value) ? SliderWidget(_controller) : twoSkeletonRow,
+            (!_controller.isLoading.value)
+                ? SliderWidget(_controller)
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
@@ -124,7 +122,9 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            (isFetchData200.value) ? SliderWidget(_controller) : twoSkeletonRow,
+            (!_controller.isLoading.value)
+                ? SliderWidget(_controller)
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
@@ -152,7 +152,9 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            (isFetchData200.value) ? SliderWidget(_controller) : twoSkeletonRow,
+            (!_controller.isLoading.value)
+                ? SliderWidget(_controller)
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
@@ -180,11 +182,15 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: TSizes.space_16,
             ),
-            (isFetchData200.value) ? SliderWidget(_controller) : twoSkeletonRow,
+            (!_controller.isLoading.value)
+                ? SliderWidget(_controller)
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_16,
             ),
-            (isFetchData200.value) ? SliderWidget(_controller) : twoSkeletonRow,
+            (!_controller.isLoading.value)
+                ? SliderWidget(_controller)
+                : twoSkeletonRow,
             const SizedBox(
               height: TSizes.space_72,
             ),
